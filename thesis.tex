@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%					     	B.Sc. Thesis - (C)
+%				      ALEXANDRU N. IOANA, 2019-2020
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Print on A4 paper, double-sided, base font size 12pt
+\documentclass[a4paper,12pt,twoside]{report}
+
+\usepackage[top=3.81cm,bottom=3cm,inner=3.5cm,outer=2.54cm]{geometry}
+
+\setcounter{secnumdepth}{4}
+
+% Actual font selection
+\usepackage{pxfonts} % bookman | pxfonts | cmbright
+
+% Include support for US english hyphenation (if installed on your system)
+\usepackage[USenglish]{babel}
+
+% Include support for correct printing of romanian characters
+\usepackage[T1]{fontenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+% Include support for graphics
+\usepackage[pdftex]{color,graphicx}
+
+% Include support for wrapping figures left or right
+\usepackage{wrapfig}
+
+% Include support for hyperlinks in the document
+\usepackage{hyperref}
+\hypersetup{unicode=true,%
+	colorlinks=true,%
+	citecolor=black,%
+	filecolor=black,%
+	linkcolor=black,%
+	urlcolor=blue}
+
+\setcounter{tocdepth}{3}
+
+% Indent first paragraph
+\usepackage{indentfirst}
+
+% Describing algorithms
+\usepackage[figure,longend,lined,boxed]{algorithm2e}
+
+% Settings for using source highlighter
+\input{utils/highlight.tex}
+
+% Setup some new commands for easier image inserting and figure referencing
+\input{utils/commands.tex}
+
+% Abbreviations & Glossary
+\usepackage[acronym]{glossaries}
+\makeglossaries
+\include{abbreviations}
+\include{glossary}
+
+% Setting headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[LE]{\nouppercase{\leftmark}}
+\fancyhead[RO]{\nouppercase{\rightmark}}
+\setlength\headheight{14.5pt}
+
+% Set spacing at 1.5lines
+\linespread{1.3}
+
+\usepackage{graphicx,xcolor}
+\usepackage{textgreek}
+
+% Document begins here
+\begin{document}
+
+% Create title page
+\include{cover}
+
+% Leave a blank page for double side printing
+\thispagestyle{empty}
+\newpage
+\hbox{}
+
+% Insert the abstract
+\include{abstract}
+
+% Insert the table of contents
+\tableofcontents
+
+% Include list of figures
+\clearpage
+\addcontentsline{toc}{chapter}{List of figures}
+\listoffigures
+\newpage
+
+\clearpage
+\addcontentsline{toc}{chapter}{Abbreviations}
+\printglossary[title=Abbreviations,type=\acronymtype]
+\newpage
+
+\include{chapters/chapter1}
+
+% Include glossary
+\clearpage
+\addcontentsline{toc}{chapter}{Glossary}
+\printglossary
+
+% Include bibliography
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
+
+\end{document}
