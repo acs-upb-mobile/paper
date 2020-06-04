@@ -55,6 +55,7 @@
 \makeglossaries
 \include{abbreviations}
 \include{glossary}
+\usepackage{caption}
 
 % Setting headers
 \usepackage{fancyhdr}
@@ -69,6 +70,13 @@
 
 \usepackage{graphicx,xcolor}
 \usepackage{textgreek}
+
+% This allows using acronyms and glossary entries in the chapter name
+\pdfstringdefDisableCommands{
+  \def\acrshort#1{<#1>}
+  \def\acrlong#1{<1>}
+  \def\gls#1{<1>}
+}
 
 % Document begins here
 \begin{document}
@@ -99,6 +107,12 @@
 \newpage
 
 \include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4}
+\include{chapters/chapter5}
+\include{chapters/chapter6}
+\include{chapters/chapter7}
 
 % Include glossary
 \clearpage
