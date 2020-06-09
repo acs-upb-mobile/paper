@@ -50,12 +50,13 @@
 % Setup some new commands for easier image inserting and figure referencing
 \input{utils/commands.tex}
 
-% Abbreviations & Glossary
+% Abbreviations, Glossary & Appendix
 \usepackage[acronym]{glossaries}
 \makeglossaries
 \include{abbreviations}
 \include{glossary}
 \usepackage{caption}
+\usepackage[toc,page]{appendix}
 
 % Setting headers
 \usepackage{fancyhdr}
@@ -123,5 +124,10 @@
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography}
+
+% Include appendix
+\begin{appendices}
+\include{chapters/appendices}
+\end{appendices}
 
 \end{document}

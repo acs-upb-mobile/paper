@@ -6,9 +6,9 @@ Before designing the application, we needed to find out more about the needs and
 
 The research and data collection methods we used were \textbf{observation} (throughout the four years that the main author of the paper was enrolled at our faculty of choice, \acrshort{acs}), \textbf{interviews} (with students, professors as well as administrative personnel of the faculty) and a \textbf{survey}, the results of which we will be focusing on in this chapter.  We mention and discuss the results of the first two methods throughout the whole paper, where they offer insightful information for the specific section. Additionally, throughout every step of the whole process of designing the application, we went through a \textbf{feedback loop} with a small group of students to ensure that we were progressing in the right direction.
 
-Partly due to the pandemic, the main method of communication with our potential users was online communication. Most of the interviews were done either via video call (through Microsoft Teams\footnote{https://teams.microsoft.com/}) or via chat (Facebook Messenger\footnote{https://messenger.com/}, WhatsApp\footnote{https://www.whatsapp.com/}) or e-mail (Gmail\footnote{http://gmail.com/}). The survey was a Google Form\footnote{http://forms.google.com/} shared both verbally and through social media platforms, receiving 212 responses between October and December 2019. Since we regrettably could not gather a relevant number of responses from Master's students, with only seven responses, we will be focusing on the Bachelor's students, since 200 out of the total of about 600 enrolled B.Sc. students is statistically relevant.
+Partly due to the pandemic, the main method of communication with our potential users was online communication. Most of the interviews were done either via video call (through \textit{Microsoft Teams}\footnote{https://teams.microsoft.com/}) or via chat (\textit{Facebook Messenger}\footnote{https://messenger.com/}, \textit{WhatsApp}\footnote{https://www.whatsapp.com/}) or e-mail (\textit{Gmail}\footnote{http://gmail.com/}). The survey was a \textit{Google Form}\footnote{http://forms.google.com/} shared both verbally and through social media platforms, receiving 212 responses between October and December 2019. Since we regrettably could not gather a relevant number of responses from Master's students, with only seven responses, we will be focusing on the Bachelor's students, since 200 out of the total of about 600 enrolled B.Sc. students is statistically relevant.
 
-To analyze the data, we imported the results from the form into a database using Microsoft SQL Server\footnote{https://www.microsoft.com/en-us/sql-server/}, normalized the data and created visualizations using Microsoft Power BI\footnote{https://powerbi.microsoft.com/}.
+To analyze the data, we imported the results from the form into a database using \textit{Microsoft SQL Server}\footnote{https://www.microsoft.com/en-us/sql-server/}, normalized the data and created visualizations using \textit{Microsoft Power BI}\footnote{https://powerbi.microsoft.com/}.
 
 \section{Target audience} \label{3:target_audience}
 
@@ -51,7 +51,7 @@ Regarding \textbf{mobile operating systems}, the distribution is very similar to
     \label{3:fig:os}
 \end{figure}
 
-Upon reviewing the data, we believe that, aside from the lack of representation for Master's students, the respondents' demographics are varied enough for a relevant sample group.
+Upon reviewing the data, we believe that, aside from the lack of representation for Master's students, the respondents' demographics are varied enough for a relevant sample group. Since the student group we expect the app to be the most useful for is first-year B.Sc. students, we will be focusing more on their needs, since the app can be further extended in the future to meet the needs of older students, where these needs differ.
 
 \section{Results} \label{3:results}
 
@@ -59,14 +59,16 @@ We used a variety of questions to learn more about the student's preferences and
 
 \subsection{Features} \label{3:features}
 
-The survey's primary purpose was to find out what kind of features would be the most useful for our students. We provided a list of potential features or types of information that could be available in the application and asked them to give each of them a rating from 1 (not very useful) to 5 (very useful). We devised a scoring system, with points between -2 and +3 for each answer, and came up with the hierarchy seen in figure \ref{3:fig:features}. The vast majority of students considered information and resources for classes and a timetable to be the most useful features.
+The survey's primary purpose was to find out what kind of features would be the most useful for our students. We provided a list of potential features or types of information that could be available in the application and asked them to give each of them a rating from 1 (not very useful) to 5 (very useful). We devised a scoring system, with points between -2 and +3 for each answer, and came up with the hierarchy seen in figure \ref{3:fig:features}.
 
 \begin{figure}[ht]
     \centering
-         \includegraphics[height=0.57\textheight]{figures/charts/survey/features.pdf}
+         \includegraphics[height=0.5\textheight]{figures/charts/survey/features.pdf}
     \caption{Preferred app features for survey respondents}
     \label{3:fig:features}
 \end{figure}
+
+The vast majority of students considered information and resources for classes and a timetable to be the most useful features.
 
 In an open-ended question, students suggested other features, such as an estimated waiting time for the canteens and a way to upload files for easy access. In terms of useful information that should be available in the app, some students suggested administrative information (about scholarships, or how to request specific documents) and feedback from other students about different classes and professors.
 
@@ -83,7 +85,7 @@ To find out how much we should prioritize coming up with an outstanding design f
 
 In an open-ended question, several students stressed that performance, as well as how smoothly an application works, are also essential factors. Additionally, some students mentioned that they prefer a simple, easy to understand menu that doesn't require a user to go through more than three steps to achieve a specific goal. Through this, they were referencing the 3-click rule of web design (as defined by Catherine E. Weeks\cite{weeks1997design}, "A person shouldn't have to click more than 3 times to find a piece of info"). However, we will not be focusing specifically on this arbitrary \acrshort{ux} requirement, because multiple studies\cite{porter2003testing}\cite{nielsen2006prioritizing} have proved it to be nothing other than a myth.
 
-One difficulty in designing a cross-platform application is that different platforms have different design guidelines that tend to be quite different\cite{thirumala2017interaction}. To help decide on a common design language for the application, we asked students how important native appearance is for them in a mobile application. We split the answers based on the student's mobile \acrshort{os} of choice, as seen in figure \ref{3:fig:native_appearance}. A native look and feel to an application is more important for iOS users than for Android users. However, it does not seem to be as important as the overall appearance of an application.
+One difficulty in designing a cross-platform application is that different platforms have different design guidelines that tend to be quite different\cite{thirumala2017interaction}. To help decide on a common design language for the application, we asked students how important native appearance is for them in a mobile application. We split the answers based on the student's mobile \acrshort{os} of choice, as seen in figure \ref{3:fig:native_appearance}. A native look and feel to an application is more important for iOS users than for Android users. However, it does not seem to be as important as the overall appearance of an application. A visual comparison between native and non-native design can be seen in appendix \ref{a:native_cross}.
 
 \begin{figure}[ht]
     \centering
