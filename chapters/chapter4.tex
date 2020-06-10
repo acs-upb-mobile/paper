@@ -61,23 +61,134 @@ As mentioned in section \ref{2:mix_and_match}, any collaborative system involvin
 
 Based on the categories described by a \textit{Bridged.co} writer\cite{bridged2019moderation}, we will be using a mixture of \textbf{pre-moderation} and \textbf{reactive moderation}, meaning that content will be verified before appearing on the platform, and users can report or flag content that they believe to be inappropriate after it has been posted.
 
-\subsection{Permission levels} \label{4:permissions_levels}
-
 Since the platform should eventually be self-sustainable, without the need of constant involvement from the developer in content moderation (as is the case for the nonscalable solution of the application \textit{Politehnik}, described in section \ref{2:existing_apps_timetable}), we need a way to offer students the ability to moderate content on the platform themselves. This begs the question - how do we decide who should have the right to moderate content, and who should not?
 
-In order to establish who should have certain rights, we first need to define the rights that are to be granted. We have designed a permission-level system, where each user has a permission number which indicates what they can do within the application:
+\subsection{Permission levels} \label{4:permissions_levels}
+
+In order to establish who should have certain rights, we first need to define the rights that are to be granted. We have designed a permission-level system, where each user has a permission number which indicates what they can do within the application. Each level includes the permissions of lower levels.
 
 \begin{itemize}
     \setlength{\topsep}{0.5pt}
     \setlength{\itemsep}{0.5pt}
     \setlength{\parsep}{0.5pt}
-    \item TODO
+    \item \textbf{0} - no special permissions; user can read public (already filtered) content and add private content or make suggestions
+    \item \textbf{1} - helper level; user can view suggestions made by other people and vote up/down depending on whether they believe the suggestion to be appropriate or not
+    \item \textbf{2} - basic moderator level; user can approve suggestions (an approved suggestion would be made public) and post content directly (without needing review); they can only delete content they posted or approved
+    \item \textbf{3} - complete moderator level; user can dismiss suggestions (dismissed suggestions would be deleted from the suggestions page and no longer visible to anyone) and delete content added by anyone
+    \item \textbf{4} - administrator level; user can change other users' permission level
 \end{itemize}
+
+\subsection{Assigning permissions} \label{4:permissions_assigning}
+
+By default, any new user would have the first permission level (0). Initially, only the developers would have level 4, allowing them to assign special permissions to trusted students in their own circle. Additionally, students who have a special status within the faculty (group/series representatives, certain members of student associations) can request to be granted permission level 2 in order to better perform their duties of informing their fellow students.
+
+In the future, a manually-defined permission system might prove to not be scalable. One potential solution in this case would be for users' permissions to gradually increase automatically as they contribute quality content to the platform (e.g., make/vote up suggestions that end up being approved, vote down suggestions that end up being dismissed). This system could be implemented into the application in a \textbf{gamified} manner (e.g. unlocking achievements and earning points by doing certain actions). Game-like platforms have a history of motivating students to actively participate. One such example within the faculty is \textit{World of USO}\footnote{https://wouso.cs.pub.ro/}, a competitive knowledge game played throughout the first semester by first-year students for the Introduction to Operating Systems (USO) class.
 
 \section{Wireframe} \label{4:wireframe}
 
 \subsection{Prototype} \label{4:wireframe_prototype}
 
+Following the focus group, we noted the feedback and created a more detailed, interactive (clickable) wireframe using Balsamiq\footnote{https://balsamiq.com/}. We re-drew the login page (fig. \ref{4:fig:balsamiq_login}), drawer (fig. \ref{4:fig:balsamiq_menu}) and websites page (fig. \ref{4:fig:balsamiq_websites}), and intoduced a home page (fig. \ref{4:fig:balsamiq_home}), as suggested by the feedback described in section \ref{4:paper_feedback}. The latter includes a list of frequently accessed websites, as well as upcoming events and tasks.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{minipage}[b]{0.25\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/balsamiq/login.png}
+        \caption{Login page wireframe}
+        \label{4:fig:balsamiq_login}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/balsamiq/home.png}
+        \caption{Home page wireframe}
+        \label{4:fig:balsamiq_home}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/balsamiq/drawer.png}
+        \caption{Menu wireframe}
+        \label{4:fig:balsamiq_menu}
+    \end{minipage}
+\end{figure}
+
+We also re-drew the news page (fig. \ref{4:fig:balsamiq_news}) and added a visualisation of the filtering option for this page.
+
+\begin{figure}[!ht]
+    \centering
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/balsamiq/websites.png}
+        \caption{Websites page wireframe}
+        \label{4:fig:balsamiq_websites}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.54\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=0.485\textwidth]{figures/app/balsamiq/news.png}
+        \includegraphics[width=0.49\textwidth]{figures/app/balsamiq/filter_news.png}
+        \caption{News page wireframe\newline}
+        \label{4:fig:balsamiq_news}
+    \end{minipage}
+\end{figure}
+
+Additionally, we added the profile page (fig. \ref{4:fig:balsamiq_profile}) requested by the feedback. It includes a potential presentation of the gamification feature suggested in section \ref{4:permissions_assigning}. This concept displays the current level of the user as well as the requirements for progressing to the next one.
+
+We also drew the "People" page containing professor and student information (fig. \ref{4:fig:balsamiq_people}). It is pictured as a list of names and allows the user to click/tap a name in order to view more information about the person. It also allows filtering the list by type (student/professor).
+
+\begin{figure}[!ht]
+    \centering
+    \begin{minipage}[b]{0.3\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/balsamiq/profile.png}
+        \caption{Profile page wireframe}
+        \label{4:fig:balsamiq_profile}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.63\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=0.485\textwidth]{figures/app/balsamiq/people.png}
+        \includegraphics[width=0.48\textwidth]{figures/app/balsamiq/teacher.png}
+        \caption{People page \newline wireframe}
+        \label{4:fig:balsamiq_people}
+    \end{minipage}
+\end{figure}
+
+Finally, we re-designed the classes and class information pages (fig. \ref{4:fig:balsamiq_classes}) and added visualisations for the filtering mechanism as well as entire process of adding a new event to a class (fig. \ref{4:fig:balsamiq_events}), as requested by the feedback.
+
+Adding an event can be done by either manually inputting all data for the event (such as the name, class and deadlines for a homework) or using an event that somebody else has already created. Existing events can be voted up or down and would be automatically voted up if a user chooses to add it to their calendar in the application.
+
+\clearpage
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=0.32\textwidth]{figures/app/balsamiq/classes.png}
+     \hfill
+     \includegraphics[width=0.32\textwidth]{figures/app/balsamiq/class_info.png}
+     \hfill
+     \includegraphics[width=0.32\textwidth]{figures/app/balsamiq/add_event.png}
+    \caption{Classes page wireframe}
+    \label{4:fig:balsamiq_classes}
+\end{figure}
+
+\begin{figure}[!ht]
+    \centering
+     \includegraphics[width=0.32\textwidth]{figures/app/balsamiq/create_event.png}
+     \hfill
+     \includegraphics[width=0.32\textwidth]{figures/app/balsamiq/public_events.png}
+     \hfill
+     \includegraphics[width=0.32\textwidth]{figures/app/balsamiq/filter_events.png}
+    \caption{Events page wireframe}
+    \label{4:fig:balsamiq_events}
+\end{figure}
+
 \subsection{Feedback} \label{4:wireframe_feedback}
 
+We asked 10 students from different years to test this prototype and share their experiences. The feedback we received was very positive, with all students showing excitement about the features that the application would be offering.
+
+The students who have iOS devices pointed out that the design style is more appropriate for Android than iOS devices, which was to be expected since the main inspiration for the prototype was an Android application which uses Material Design\cite{google2020material} (\textit{School Assistant}).
+
 \section{Final design} \label{4:final}
+TODO
