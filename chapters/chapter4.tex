@@ -8,13 +8,13 @@ The proposed functionalities of our application are listed in section \ref{1:fun
 
 We will be designing a collaborative application (a decision motivated in section \ref{2:mix_and_match}) with a moderation system based on permission levels, described in this chapter in section \ref{4:permissions}.
 
-Based on the results of our survey (section \ref{3:appearance}), our design language of choice will be neither Google's Material Design\cite{google2020material}, nor Apple's Human Interface Guidelines\cite{apple2020human}, but rather what we consider to be a healthy mix of both. This design aims to be easy on the eyes of both Android and iOS users, as is required of a cross-platform application which aims to have a consistent design on all platforms. A good example of another such application is \textit{Reddit} (available on both the App Store\footnote{https://apps.apple.com/us/app/reddit/id1064216828} and Google Play\footnote{https://play.google.com/store/apps/details?id=com.reddit.frontpage} with a very similar design that only slightly differs in the web version\footnote{http://reddit.com/}). However, since it sports a platform-agnostic design, independent developers have come up with separate applications for viewing \textit{Reddit} content on Android and iOS devices which claim to have a more "native" look for the more nitpicky users. A visual comparison between these applications can be seen in appendix \ref{a:native_cross}.
+Based on the results of our survey (section \ref{3:appearance}), our design language of choice will be neither Google's Material Design\cite{google2020material}, nor Apple's Human Interface Guidelines\cite{apple2020human}, but rather what we consider to be a healthy mix of both. This design aims to be pleasant for both Android and iOS users, as is required of a cross-platform application which aims to have a consistent design on all platforms. A good example of another such application is \textit{Reddit} (available on both the App Store\footnote{https://apps.apple.com/us/app/reddit/id1064216828} and Google Play\footnote{https://play.google.com/store/apps/details?id=com.reddit.frontpage} with a very similar design that only slightly differs in the web version\footnote{http://reddit.com/}). However, since it sports a platform-agnostic design, independent developers have come up with separate applications for viewing \textit{Reddit} content on Android and iOS devices, which claim to have a more "native" look for the more nitpicky users. A visual comparison between these applications can be seen in appendix \ref{a:native_cross}.
 
 \section{Paper prototyping} \label{4:paper}
 
 \subsection{Initial concept} \label{4:paper_concept}
 
-We kick-started the design process by making a rough sketch of what we were imagining the app to look like, on paper, with the features we had in mind in the beginning. We used the \textit{School Assistant} app (see section \ref{2:generic_apps}) as the main inspiration for this first design.
+We kick-started the design process by making a rough sketch of what we imagined the app to look like, on paper, with the features we had in mind in the beginning. We used the \textit{School Assistant} app (see section \ref{2:generic_apps}) as the main inspiration for this first design.
 
 \begin{figure}[ht]
     \centering
@@ -39,17 +39,17 @@ Figure \ref{4:fig:paper_prototyping} shows the very first sketches of the applic
     \setlength{\parsep}{0.5pt}
     \item the login page the user would see when first opening the app
     \item the Material\cite{google2020material}-style side drawer with the different pages in the app, available once the user logs in
-    \item the list of platforms provided by the university, which would serve as the default page the user would see without accessing the drawer
+    \item a list of the university's platforms, which would serve as the default page the user would see without accessing the drawer
     \item the "News" page with information from various sources, such as relevant Facebook pages and the official website
     \item the timetable, with a button to add a new event
-    \item the list of classes, organised by year/semester, with a button to add a new class
-    \item information about a class, that a user would see when clicking on an event in the timetable or a class in the list
+    \item the list of classes, organized by year/semester, with a button to add a new class
+    \item information about a class that a user would see when clicking on an event or class
     \item the map of the campus, with a button to search for a specific location
 \end{itemize}
 
 \subsection{Feedback} \label{4:paper_feedback}
 
-In order to find out what students would think about this initial concept, we organised a focus group with about 15 students and presented each of them the workflow of our application. Regarding \textbf{authentication}, we have received feedback about the need of a profile page for the user, as well as the possibility for a user to use the app without having to authenticate. Multiple students pointed out that having the "Platforms" page as the default was counter-intuitive, and that a \textbf{designated "Home" page} would be a better solution. When asked what they think this homepage should contain, they suggested quick actions and upcoming events, in other words an overview at a glance of the other pages within the app.
+To find out what students would think about this initial concept, we organized a focus group with about 15 students and presented each of them the workflow of our application. Regarding \textbf{authentication}, we have received feedback regarding the need for a profile page for the user. The possibility for a user to use the app without having to authenticate was also mentioned. Multiple students pointed out that having the "Platforms" page as the default was counter-intuitive, and that a \textbf{designated "Home" page} would be a better solution. When asked what they think this homepage should contain, they suggested quick actions and upcoming events; in other words, an overview at a glance of the other pages within the app.
 
 Some students pointed out that the homework-type events should have both \textbf{a soft and a hard deadline} associated with them, as is the norm in the faculty. Additionally, they wanted to see how the process of adding a new event would work.
 
@@ -57,15 +57,15 @@ Some students pointed out that the homework-type events should have both \textbf
 
 \subsection{The need for moderation} \label{4:permissions_need}
 
-As mentioned in section \ref{2:mix_and_match}, any collaborative system involving more than a few users requires some form of moderation\cite{roberts2019behind}. This is meant to ensure that content stays accurate and up-to-date, as well as avoid offensive/inappropriate content.
+As mentioned in section \ref{2:mix_and_match}, any collaborative system involving more than a few users requires some form of moderation\cite{roberts2019behind}. This system is meant to ensure that content stays accurate and up-to-date and avoid offensive/inappropriate content.
 
 Based on the categories described by a \textit{Bridged.co} writer\cite{bridged2019moderation}, we will be using a mixture of \textbf{pre-moderation} and \textbf{reactive moderation}, meaning that content will be verified before appearing on the platform, and users can report or flag content that they believe to be inappropriate after it has been posted.
 
-Since the platform should eventually be self-sustainable, without the need of constant involvement from the developer in content moderation (as is the case for the nonscalable solution of the application \textit{Politehnik}, described in section \ref{2:existing_apps_timetable}), we need a way to offer students the ability to moderate content on the platform themselves. This begs the question - how do we decide who should have the right to moderate content, and who should not?
+Since the platform should eventually be self-sustainable, without the need of constant involvement from the developer in content moderation (as is the case for the nonscalable solution of the application \textit{Politehnik}, described in section \ref{2:existing_apps_timetable}), we need a way to offer students the ability to moderate content on the platform themselves. This situation begs the question - how do we decide who should have the right to moderate content, and who should not?
 
 \subsection{Permission levels} \label{4:permissions_levels}
 
-In order to establish who should have certain rights, we first need to define the rights that are to be granted. We have designed a permission-level system, where each user has a permission number which indicates what they can do within the application. Each level includes the permissions of lower levels.
+To establish who should have certain rights, we need to define the rights that are to be granted. We have designed a permission-level system, where each user has a permission number, which indicates what they can do within the application. Each level includes the permissions of lower levels.
 
 \begin{itemize}
     \setlength{\topsep}{0.5pt}
@@ -80,15 +80,15 @@ In order to establish who should have certain rights, we first need to define th
 
 \subsection{Assigning permissions} \label{4:permissions_assigning}
 
-By default, any new user would have the first permission level (0). Initially, only the developers would have level 4, allowing them to assign special permissions to trusted students in their own circle. Additionally, students who have a special status within the faculty (group/series representatives, certain members of student associations) can request to be granted permission level 2 in order to better perform their duties of informing their fellow students.
+By default, any new user would have the first permission level (0). Initially, only the developers would have level 4, allowing them to assign special permissions to trusted students in their circle. Additionally, students who have a special status within the faculty (group/series representatives, certain members of student associations) can request to be granted level 2 to inform their fellow students easily.
 
-In the future, a manually-defined permission system might prove to not be scalable. One potential solution in this case would be for users' permissions to gradually increase automatically as they contribute quality content to the platform (e.g., make/vote up suggestions that end up being approved, vote down suggestions that end up being dismissed). This system could be implemented into the application in a \textbf{gamified} manner (e.g. unlocking achievements and earning points by doing certain actions). Game-like platforms have a history of motivating students to actively participate. One such example within the faculty is \textit{World of USO}\footnote{https://wouso.cs.pub.ro/}, a competitive knowledge game played throughout the first semester by first-year students for the Introduction to Operating Systems (USO) class.
+In the future, a manually-defined permission system might prove not to be scalable. In this case, one potential solution would be for users' permissions to gradually increase as they contribute quality content to the platform (e.g., make/vote up suggestions that end up being approved, vote down suggestions that end up being dismissed). This system could be implemented into the application in a \textbf{gamified} manner (e.g., unlocking achievements and earning points by doing specific actions). Game-like platforms have a history of motivating students to participate actively. One such example within the faculty is \textit{World of USO}\footnote{https://wouso.cs.pub.ro/}, a competitive knowledge game played throughout the first semester by first-year students for the Introduction to Operating Systems (USO) class.
 
 \section{Wireframe} \label{4:wireframe}
 
 \subsection{Prototype} \label{4:wireframe_prototype}
 
-Following the focus group, we noted the feedback and created a more detailed, interactive (clickable) wireframe using Balsamiq\footnote{https://balsamiq.com/}. We re-drew the login page (fig. \ref{4:fig:balsamiq_login}), drawer (fig. \ref{4:fig:balsamiq_menu}) and websites page (fig. \ref{4:fig:balsamiq_websites}), and intoduced a home page (fig. \ref{4:fig:balsamiq_home}), as suggested by the feedback described in section \ref{4:paper_feedback}. The latter includes a list of frequently accessed websites, as well as upcoming events and tasks.
+Following the focus group, we noted the feedback and created a more detailed, interactive (clickable) wireframe using Balsamiq\footnote{https://balsamiq.com/}. We re-drew the login page (fig. \ref{4:fig:balsamiq_login}), drawer (fig. \ref{4:fig:balsamiq_menu}) and websites page (fig. \ref{4:fig:balsamiq_websites}), and introduced a home page (fig. \ref{4:fig:balsamiq_home}), as suggested by the feedback described in section \ref{4:paper_feedback}. The latter includes a list of frequently accessed websites, as well as upcoming events and tasks.
 
 \begin{figure}[!ht]
     \centering
@@ -114,51 +114,51 @@ Following the focus group, we noted the feedback and created a more detailed, in
     \end{minipage}
 \end{figure}
 
-We also re-drew the news page (fig. \ref{4:fig:balsamiq_news}) and added a visualisation of the filtering option for this page.
+We also re-drew the news page (fig. \ref{4:fig:balsamiq_news}) and added a visualization of the filtering option for this page.
 
 \begin{figure}[!ht]
     \centering
-    \begin{minipage}[b]{0.26\textwidth}
+    \begin{minipage}[t]{0.26\textwidth}
         \captionsetup{justification=centering}
         \includegraphics[width=\textwidth]{figures/app/balsamiq/websites.png}
         \caption{Websites page wireframe}
         \label{4:fig:balsamiq_websites}
     \end{minipage}
     \hfill
-    \begin{minipage}[b]{0.54\textwidth}
+    \begin{minipage}[t]{0.54\textwidth}
         \captionsetup{justification=centering}
         \includegraphics[width=0.485\textwidth]{figures/app/balsamiq/news.png}
         \includegraphics[width=0.49\textwidth]{figures/app/balsamiq/filter_news.png}
-        \caption{News page wireframe\newline}
+        \caption{News page wireframe}
         \label{4:fig:balsamiq_news}
     \end{minipage}
 \end{figure}
 
 Additionally, we added the profile page (fig. \ref{4:fig:balsamiq_profile}) requested by the feedback. It includes a potential presentation of the gamification feature suggested in section \ref{4:permissions_assigning}. This concept displays the current level of the user as well as the requirements for progressing to the next one.
 
-We also drew the "People" page containing professor and student information (fig. \ref{4:fig:balsamiq_people}). It is pictured as a list of names and allows the user to click/tap a name in order to view more information about the person. It also allows filtering the list by type (student/professor).
+We also drew the "People" page containing professor and student information (fig. \ref{4:fig:balsamiq_people}). It is pictured as a list of names and allows the user to click/tap a name to view more information about the person. It also allows filtering the list by type (student/professor).
 
 \begin{figure}[!ht]
     \centering
-    \begin{minipage}[b]{0.3\textwidth}
+    \begin{minipage}[t]{0.3\textwidth}
         \captionsetup{justification=centering}
         \includegraphics[width=\textwidth]{figures/app/balsamiq/profile.png}
         \caption{Profile page wireframe}
         \label{4:fig:balsamiq_profile}
     \end{minipage}
     \hfill
-    \begin{minipage}[b]{0.63\textwidth}
+    \begin{minipage}[t]{0.63\textwidth}
         \captionsetup{justification=centering}
         \includegraphics[width=0.485\textwidth]{figures/app/balsamiq/people.png}
         \includegraphics[width=0.48\textwidth]{figures/app/balsamiq/teacher.png}
-        \caption{People page \newline wireframe}
+        \caption{People page wireframe}
         \label{4:fig:balsamiq_people}
     \end{minipage}
 \end{figure}
 
-Finally, we re-designed the classes and class information pages (fig. \ref{4:fig:balsamiq_classes}) and added visualisations for the filtering mechanism as well as entire process of adding a new event to a class (fig. \ref{4:fig:balsamiq_events}), as requested by the feedback.
+Finally, we re-designed the classes and class information pages (fig. \ref{4:fig:balsamiq_classes}) and added visualizations for the filtering mechanism as well as the entire process of adding a new event to a class (fig. \ref{4:fig:balsamiq_events}), as requested by the feedback.
 
-Adding an event can be done by either manually inputting all data for the event (such as the name, class and deadlines for a homework) or using an event that somebody else has already created. Existing events can be voted up or down and would be automatically voted up if a user chooses to add it to their calendar in the application.
+Adding an event can be done by either manually inputting all data for the event (such as the name, class, and deadlines for homework) or using an event that somebody else has already created. Existing events can be voted up or down and would be automatically voted up if a user chooses to add it to their calendar in the application.
 
 \clearpage
 
@@ -186,9 +186,25 @@ Adding an event can be done by either manually inputting all data for the event 
 
 \subsection{Feedback} \label{4:wireframe_feedback}
 
-We asked 10 students from different years to test this prototype and share their experiences. The feedback we received was very positive, with all students showing excitement about the features that the application would be offering.
+We asked ten students from different years to test this prototype and share their experiences. The feedback we received was very positive, with all students showing excitement about the application's features.
 
 The students who have iOS devices pointed out that the design style is more appropriate for Android than iOS devices, which was to be expected since the main inspiration for the prototype was an Android application which uses Material Design\cite{google2020material} (\textit{School Assistant}).
 
 \section{Final design} \label{4:final}
+
+\subsection{Theme} \label{4:final_theme}
+
+\begin{wrapfigure}{l}{0.15\columnwidth}
+    \centering
+    \includegraphics[width=0.15\columnwidth]{figures/logos/acs.png}
+    \caption{\acrshort{acs} logo}
+    \label{4:fig:acs_logo}
+\end{wrapfigure}
+
+For the final design, we created a dual theme (including dark \& light mode) that is inspired by the faculty logo (fig. \ref{4:fig:acs_logo}). The primary and secondary colours of the application are extracted from the logo and used for text, buttons as well as illustrations.
+
+The font used in the application is Montserrat\footnote{https://fonts.google.com/specimen/Montserrat}.All icons are either Material Design icons\footnote{https://material.io/resources/icons/} or FontAwesome icons\footnote{https://fontawesome.com/icons/}. Illustrations are from the open-source unDraw\footnote{https://undraw.co/illustrations} gallery. All of the above are under open licenses and allow usage, modification and redistribution.
+
+\subsection{Pages} \label{4:pages}
+
 TODO

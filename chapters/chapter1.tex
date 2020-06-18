@@ -8,8 +8,10 @@
     
     Due to the rapid pace in which new and better technologies replace the old ones, as well as the existence of a variety of tools that serve more or less the same purpose, students nowadays find themselves flooded with a plethora of platforms and resources provided by their faculty.
     
-    Nowadays, new and better technologies replace old ones at a rapid pace. This progress often implies that some people will continue to use the old tools (or even "analog" tools instead of "digital" ones) out of habit, while other, more progressive people will immediately switch to the new ones. As a result, there exists a discrepancy in the platforms used by professors for the same purpose. This discrepancy, in turn, overwhelms students to the point where some even drop out.
+    Nowadays, new and better technologies replace old ones at a rapid pace. This progress often implies that some people will continue to use the old tools (or even "analog" tools instead of "digital" ones) out of habit, while early adopters will immediately switch to the new ones. As a result, there exists a discrepancy in the platforms used by professors for the same purpose. This discrepancy, in turn, overwhelms students, particularly in their first year of university.
     % TODO: Link to case study with used technologies in ACS
+    
+    % TODO: mi se pare ca intri ff repede in studenti ca sa zic asa. 
     
     In order to cope with the massive influx of information, students often turn to each other for help and assistance. This process is informal, taking place either face to face or through social media platforms.
     % TODO: Link to case study with socialization in ACS
@@ -19,6 +21,8 @@
 \section{Environment} \label{1:environment}
 
     For the purpose of this paper and the application prototype, we will be analyzing the case of one of the 15 faculties\footnote{https://upb.ro/en/faculties/} of \textbf{\acrlong{upb}} in Romania, namely the \textbf{\acrlong{acs}}. From here on out, we will be referring to the larger engineering institution as \textit{the university} or \textit{\acrshort{upb}}, and to the computer science faculty as \textit{the faculty} or \textit{\acrshort{acs}}.
+    
+    This section provides insight into the context of this application, namely the typology of the \acrshort{acs} student (subsection \ref{2:student_profile}) - our user - as well as relevant details about the way their university life is organised. The latter includes information about how the student groups are organised within the university (subsection \ref{1:student_body_structure}), which platforms they need to use in order to perform their duties (subsection \ref{1:university_platforms}) as well as what kind of activities make up their schedule (subsection\ref{1:class_structure}).
     
     \subsection{Student/user profile} \label{2:student_profile}
     
@@ -51,17 +55,18 @@
             \setlength{\topsep}{0.5pt}
             \setlength{\itemsep}{0.5pt}
             \setlength{\parsep}{0.5pt}
-            \item \textbf{the official university website} for general university information such as the campus map and academic calendar
-            \item \textbf{the official faculty website} for the curriculum, certain announcements and timetable information
-            \item \textbf{various course/wiki websites} for class resources
-            \item \textbf{a \gls{moodle} instance} for class-related announcements, discussions and assignments
-            \item \textbf{the university's administrative website} for the student contract, personal information and grades
-            \item \textbf{several automated-testing environments} for coding assignments
+            \item \textbf{the official university website}\footnote{http://upb.ro/} for general university information such as the campus map and academic calendar
+            \item \textbf{the official faculty website}\footnote{http://acs.pub.ro/} for the curriculum, certain announcements and timetable information
+            \item \textbf{various course/wiki websites}\footnote{https://ocw.cs.pub.ro/, http://elf.cs.pub.ro/} for class resources
+            \item \textbf{a \gls{moodle} instance}\footnote{https://acs.curs.pub.ro/} for class-related announcements, discussions and assignments
+            \item \textbf{the university's administrative website}\footnote{https://studenti.pub.ro/} for the student contract, personal information and grades
+            \item \textbf{several automated-testing environments}\footnote{https://vmchecker.cs.pub.ro/, https://v2.vmchecker.cs.pub.ro/} for coding assignments
         \end{itemize}
     
         Most of the platforms mentioned above can be accessed using a single set of credentials provided by the university upon admission.
         
     \subsection{Class structure} \label{1:class_structure}
+    % TODO: cum se leaga asta de restul?
     
     A student's schedule contains three main types of classes:
     
@@ -78,30 +83,40 @@
         
 \section{Proposed functionalities} \label{1:functionalities}
 
-    Given the environment described in section \ref{1:environment}, we can propose a number of main functionalities for the application:
+    Given the environment described in section \ref{1:environment}, we can propose a number of important actions that the student should be able to do within our application:
     
     \begin{itemize}
         \setlength{\topsep}{0.5pt}
         \setlength{\itemsep}{0.5pt}
         \setlength{\parsep}{0.5pt}
-        \item \textbf{authentication} (ideally linked to the common credentials used for the other platforms)
-        \item \textbf{localization}: the application should provide a \acrshort{ui} (\acrlong{ui}) in both Romanian (for local students) and English (for international students)
-        \item the possibility to \textbf{access, modify and filter a list of platforms provided by the university} (see section \ref{1:university_platforms}), as well as view information about their use
-        \item the possibility to collaboratively \textbf{create and edit a timetable} which includes class information as well as various events
+        \item \textbf{access, modify and filter a list of platforms provided by the university} (see section \ref{1:university_platforms}), as well as view information about their use
+        \item collaboratively \textbf{create and edit a timetable} which includes class information as well as various events (based on the types described in section \ref{1:class_structure})
+    \end{itemize}
+    
+    Additionally, the application can provide additional, useful features such as:
+    
+    \begin{itemize}
+        \setlength{\topsep}{0.5pt}
+        \setlength{\itemsep}{0.5pt}
+        \setlength{\parsep}{0.5pt}
         \item \textbf{campus map and navigation information}
         \item \textbf{news, FAQs and other relevant information} to which students can contribute
+        \item \textbf{authentication} (ideally linked to the common credentials used for the other platforms)
+        \item \textbf{localization}: the application should provide a \acrshort{ui} (\acrlong{ui}) in both Romanian (for local students) and English (for international students)
     \end{itemize}
 
 \section{Goals} \label{1:goals}
 
-    The application aims to make students' lives easier by providing a single point of access for all university resources and needs, supported by the students, for the students. It should be intuitive and easy to use, as well as allow customization for any student.
+    We believe that the students understand their own needs better than the faculty staff ever could. The university lacks the agility to supply useful technologies aiding students in managing their resources and schedule. Therefore, we believe that an application built, maintained and managed by students has the best chance of providing a much-needed helping hand for students juggling with a vast amount of information coming from the university.
     
-    Above all, the application should be particularly helpful for first-year students by offering an easy way to find out anything they want to know about the ins and outs of their new university life.
+    This application should be intuitive and easy to use, as well as allow customization for any student. Above all, it should be particularly helpful for first-year students by offering an easy way to find out anything they want to know about the ins and outs of their new university life.
+    
+    Students can contribute to the application by submitting a \acrshort{pr} (\acrlong{pr}) into the public repository\footnote{https://github.com/acs-upb-mobile/acs-upb-mobile/}, which means that it can easily be kept up-to-date with their needs and wants.
     
     Ultimately, the application aims to become an integral part of students' lives and contribute to their education, all the while decreasing the feelings of anxiety caused by being bombarded with new, often disorganized information.
 
 \section{Outline} \label{1:outline}
-    \textbf{Chapter \ref{chapter2}} outlines the current state of the art, in terms of existing applications with a similar or related purpose to our application. This analysis includes applications made specifically for certain universities (including our own), generic education applications for students, as well as other productivity applications that do not specifically target students, but which are often used by them to organise their academic activities.
+    \textbf{Chapter \ref{chapter2}} outlines the current state of the art, in terms of existing applications with a similar or related purpose to our application.
     
     \textbf{Chapter \ref{chapter3}} presents the methods used for our user study and focuses on what we learned from the survey we created.
     

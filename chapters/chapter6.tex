@@ -1,7 +1,32 @@
 \chapter{Conclusion} \label{chapter6}
 
 \section{Caveats} \label{6:caveats}
+TODO
+% the problems that could arise if the application is to be supported officially by the administration
+% scalability - Firebase/publishing price?
 
 \section{Feedback} \label{6:feedback}
+TODO % monospaced font
+% accounts created automatically based on the Moodle/studenti account
 
 \section{Future improvements} \label{6:future}
+    \subsection{Store publishing} \label{6:future_publish}
+    TODO % AppStore/Google Play publishing process, stuff that would need to be done
+    
+    \subsection{Integrations} \label{6:future_integrations}
+
+    Since our ultimate goal is to help students, we do not see other published apps meant for students as a competition but rather as an opportunity to learn and improve our application. We believe that building upon the existing technologies is better than trying to re-invent the wheel and create more confusion among students, who would have yet more tools for the same job.  Consequently, in the future, we aim to integrate with existing, published applications (e.g. \textit{UPBCampus}, described in section \ref{2:existing_apps_navigation}, and \textit{Politehnik}, described in section \ref{2:existing_apps_timetable}) in order to extend our app's functionality. Users can select certain options in our app and be redirected to another relevant app. We can implement this feature through URL schemes\footnote{https://developer.apple.com/documentation/uikit/inter-process\_communication} in iOS or the more well-rounded concept of Intents\footnote{https://developer.android.com/guide/components/intents-filters} on Android. Two possible integrations with the tools mentioned above would be, for instance, navigating to a location of an event saved in our application, by using the \textit{UPBCampus} app, or adding the \textit{Politehnik} events users are interested in into the calendar in our app.
+    
+    Additionally, in the future, data can be extracted from official platforms. For example, news can be obtained from the official university and faculty websites using the \gls{flutter} \mintinline{text}{web_scraper} package\footnote{https://pub.dev/packages/web\_scraper} and events can be imported directly from the e-learning platform by using the \gls{moodle} \acrshort{api}.
+    
+    \subsection{Additional features} \label{6:future_features}
+    
+    Thanks to the students interviewed for our \textbf{Case study} (section \ref{2:uni_apps_case_study}) and the survey in our \textbf{User study} (chapter \ref{chapter3}), we can define additional features that would further improve the usefulness of our application, namely:
+    \begin{itemize}
+        \item TODO
+    \end{itemize}
+    
+    \subsection{Extending to other faculties/universities} \label{6:future_extending}
+    Due to the fact that the application is built to be highly customizable and the entire data is fetched from the database, the codebase can be easily re-used to create an application for a different faculty or university with the same needs. It would just have to be connected to a different Firebase project with the same setup, containing data that is relevant for the new university.
+    
+    TODO % What info has to be changed, maybe adding a tutorial for less digitally-inclined students
