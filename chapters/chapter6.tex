@@ -1,17 +1,38 @@
 \chapter{Conclusion} \label{chapter6}
 
 \section{Caveats} \label{6:caveats}
-TODO
-% the problems that could arise if the application is to be supported officially by the administration
-% scalability - Firebase/publishing price?
+
+\subsection{Scalability} \label{6:scalability}
+
+The application should easily be able to support usage from the (roughly 4000) students of \acrshort{acs}. Initially, the free Firebase plan (Spark\footnote{https://firebase.google.com/pricing}) should be enough for our relatively low number of users. It offers a daily quota of 50k reads, 20k writes and 20k deletes. Even with the optimistic assumption that every single student would use the application every single day, the limit should not be reached with normal usage. The number of writes per minute could be limited from the application (using a time-out) without causing a significant inconvenience for the users. The invalidation of cached data in the app could be less aggressive in order to restrict the number of daily reads. These measures would ensure that users cannot abuse the database and force it to reach the cap for the free plan too soon.
+
+However, as more students begin to use the application, some "peak" periods (such as the beginning of the year when everyone would set up their application with the new schedule) might lead to reaching the free plan's cap. We should consider upgrading to the pay-as-you-go plan (Blaze\footnotemark[1]) in the future. It offers everything that the free plan offers (meaning if usage stays under the cap, it is still free), as well as the possibility to pay for any transactions that go over the cap (100k additional reads, writes and deletes costing \$0.06, \$0.18 and \$0.02 respectively). It includes many other features such as a daily backup of the database.
+
+\subsection{Collaboration with the university}
+In its current form, the application is meant to be used and maintained solely by students. However, many more useful features (including some suggestions from students mentioned below, in sections \ref{6:feedback} and \ref{6:future}) could be added to the application if the faculty staff would contribute. On the other hand, an official university application should only contain information published by the staff, which goes against the concept of students contributing with data themselves. Additionally, the university may want to censor some of the resources that the students may want to share, such as written courses that are not available online or old exam subjects. A potential middle-ground solution for this problem would be to find a way to very clearly mark \textit{official information} from \textit{student additions} within the app. This way, the university is only responsible for the official data, and the students can choose to use the information provided by other students or not.
+
+Furthermore, since the application is meant to be free and will not contain ads or another form of monetization, it would be ideal if the faculty could support the running costs. Including the database (section \ref{6:scalability}) and store publishing costs (section \ref{6:future_publish}), these would not surpass \$200 a year with the current set-up. Therefore, we believe that it would be a beneficial investment for the sake of the faculty's students.
 
 \section{Feedback} \label{6:feedback}
-TODO % monospaced font
-% accounts created automatically based on the Moodle/studenti account
+The feedback we received from the students who tested the application was overwhelmingly positive. They noted the small details like being able to change the language and the theme of the application and showed excitement about the variety of different features offered.
+
+Some students suggested that it would be easier if accounts were created automatically based on their \gls{moodle} accounts so that they would not have to sign up.
+
+In terms of \acrshort{ui}, the only improvement that was suggested was to use a monospaced font, so that certain pieces of text with the same length have the same size (for instance, the timetable hours - fig. \ref{4:fig:timetable} and the filter node labels - fig. \ref{4:fig:filter}).
 
 \section{Future improvements} \label{6:future}
     \subsection{Store publishing} \label{6:future_publish}
-    TODO % AppStore/Google Play publishing process, stuff that would need to be done
+    In order to publish the app on the \textbf{App Store}, an \textit{Apple Developer Account}, which costs \$99 per year, is required. Additionally, the app needs to meet all of the requirements specified in the \textit{App Store Guidelines}\footnote{https://developer.apple.com/app-store/review/guidelines/}. The review process usually takes from 24 to 48 hours.
+    
+    For \textbf{Google Play}, a \textit{Google Play Developer Account} with an upfront cost of \$25 is required. The Android \textit{Quality Guidelines} specify what the app needs to achieve before being published. The review process generally takes from 3 to 7 days.
+    
+    One notable requirement that is specified or suggested in both guidelines is providing user agreements such as \acrshort{eula} (\acrlong{eula}) and \acrshort{tos} (\acrlong{tos}). Before publishing the application, these documents should be devised accordingly (taking into consideration regulations such ad the \acrshort{gdpr}) and shown to the user during the sign up process.
+    
+    A feature that would be useful once the application is published would be a way to request a review from the user, to ensure a good position in the mobile stores.
+    
+    Furthermore, a few more improvements should be made to the app before it is publicly available. Thanks to our architecture (see section \ref{5:separation}), the data is almost entirely in the database and can be modified without updating the application. This structure helps avoid the bottleneck of having to publish a new version of the application for any small detail (and require users to update). On the other hand, sometimes an update \textbf{is} necessary and users might need to update as soon as possible (for example, a change in the database structure may mean that some parts of an old version of the app might stop working entirely). For that case, we should implement a way to remotely block users from using the app (or certain parts of it) unless they update it.
+    
+    To help with future debugging, we should introduce a logger feature that logs errors and other information into a file on the device that the user can upload in a bug report.
     
     \subsection{Integrations} \label{6:future_integrations}
 
@@ -19,14 +40,38 @@ TODO % monospaced font
     
     Additionally, in the future, data can be extracted from official platforms. For example, news can be obtained from the official university and faculty websites using the \gls{flutter} \mintinline{text}{web_scraper} package\footnote{https://pub.dev/packages/web\_scraper} and events can be imported directly from the e-learning platform by using the \gls{moodle} \acrshort{api}.
     
+    Finally, users should be able to sync the events in the application with their calendar of choice. This should not be too difficult to achieve, as most calendar applications (including Google Calendar\footnote{https://support.google.com/calendar/answer/37118}) share a similar format for events which would be possible to export as a \textit{csv} file. An example of the format is pictured in table \ref{6:tab:event_format}.
+    
+    \begin{table}[th]\small\linespread{1}
+        \centering
+        \caption{Google Calendar importable event fields}
+        \label{6:tab:event_format}
+        \begin{tabular}{| l | l | l | l | l | l | l | l | l |}
+        \hline
+        \textbf{Subject} & \textbf{Start Date} & \textbf{Start Time} & \textbf{End Date} & \textbf{End Time} & \textbf{Location}
+        \\
+        \hline
+        PC - Exam & 28/01/2020 & 10:00 AM & 28/01/2020 & 12:00 PM & PR001
+        \\
+        \hline
+        \end{tabular}
+    \end{table}
+    
     \subsection{Additional features} \label{6:future_features}
     
     Thanks to the students interviewed for our \textbf{Case study} (section \ref{2:uni_apps_case_study}) and the survey in our \textbf{User study} (chapter \ref{chapter3}), we can define additional features that would further improve the usefulness of our application, namely:
     \begin{itemize}
-        \item TODO
+        \setlength{\topsep}{0.5pt}
+        \setlength{\itemsep}{0.5pt}
+        \setlength{\parsep}{0.5pt}
+        \item canteen menu information and expected waiting time
+        \item a way to upload files directly into the application for easy access
+        \item feedback from students about classes and professors, for new generations to see and know what to expect
+        \item a special timetable for classroom availability
+        \item an administrative section that allows students to request documents or make payments
     \end{itemize}
     
     \subsection{Extending to other faculties/universities} \label{6:future_extending}
-    Due to the fact that the application is built to be highly customizable and the entire data is fetched from the database, the codebase can be easily re-used to create an application for a different faculty or university with the same needs. It would just have to be connected to a different Firebase project with the same setup, containing data that is relevant for the new university.
+    Since the application is built to be highly customizable and the entire data is fetched from the database, the codebase can be easily re-used to create an application for a different faculty or university with the same needs. It would just have to be connected to a different Firebase project with the same setup, containing data relevant to the new university.
     
-    TODO % What info has to be changed, maybe adding a tutorial for less digitally-inclined students
+    Some components that would need to be changed would be the application theme, illustration, and logos. Additionally, a tutorial on how to use the application could be added for less digitally-inclined students.

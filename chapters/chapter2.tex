@@ -74,7 +74,7 @@ Additionally, we will also be looking into the existing applications targeted fo
         
         The user needs to manually input and modify this information at the beginning of each semester and throughout the year as new events arise or changes are made.
         
-        \begin{figure}[!h]
+        \begin{figure}[!ht]
             \centering
                 \begin{minipage}[b]{0.39\textwidth}
                     \captionsetup{justification=centering}
@@ -96,7 +96,7 @@ Additionally, we will also be looking into the existing applications targeted fo
         Unlike university-specific apps described in section \ref{2:uni_apps}, where costs are supported entirely by the university, and usage is free for the students, generic applications usually require each student to pay for themselves. As is the trend with a lot of mobile applications nowadays, most of them are free initially (and might contain ads) and either offer a trial period or a limited number of features until the user upgrades to a paid version. \textit{School Assistant}, for instance, has another version of the app with more features, \textit{School Assistant +}, with an upfront cost of \$2.75. \textit{myHomework} has a subscription-based model: it provides a free version with limited functionality and advertisements, as well as the ability to upgrade to a \textit{Premium} version for \$4.99 a year. \textit{ClassUp}, on the other hand, is entirely free and has no ads.
         
     \subsection{Caveats} \label{2:generic_apps_caveats}
-        The biggest issue with these apps, stemming from their customizability, is that \textit{they need to be set up to be usable}. Unlike university-specific apps described in section \ref{2:uni_apps}, which generally "just work" as soon as you log in using your university credentials, for generic applications to be useful, the students need to manually input all of their classes, assignments, professor information, and others. 
+        For users, the biggest issue with these apps, stemming from their customizability, is that \textit{they need to be set up to be usable}. Unlike university-specific apps described in section \ref{2:uni_apps}, which generally "just work" as soon as you log in using your university credentials, for generic applications to be useful, the students need to manually input all of their classes, assignments, professor information, and others. 
         
         Depending on the app, as well as the amount and complexity of the information that should be inputted, this process can initially take from a few minutes to a few hours and requires active updating by the student throughout the academic year (as new assignments are issued, classes change, etcetera). For most students, this is often more effort than it is worth. We observed this in our user study (described in chapter \ref{chapter3}), in which out of over 200 students, only three said they were using a class management app (specifically, the three applications we chose as examples in this section).
         
@@ -128,11 +128,11 @@ Additionally, we will also be looking into the existing applications targeted fo
     \subsubsection{Current platforms} \label{2:existing_apps_history_current}
     The university's current platform for students to manage and view their enrollment information (including contracts, grades, and accommodation),  \textit{studenti.pub.ro}, started back in 2007 as a small platform developed by students for managing housing requests for the university's student halls of residence. More much-needed functionality was added as time passed, and it slowly became an integral part of any \acrshort{upb} student's life. However, it has not seen a significant update in a long time, with features such as requesting proof of enrollment, graduation, or other documents being greyed out and marked as \textit{coming soon} for the past few years.
     
-    In 2019, an \acrshort{acs} professor introduced the university's \gls{moodle} platform through an EU-funded project called "E-learning and e-content curriculum platform for technical higher education" (project number 154/323, \gls{smis} code 4428). According to the project's official website\cite{upb2009elearning}, the percentage of university courses providing digital (e-learning) materials grew from 9\% (170 courses) up to 35\% (600 courses) thanks to the project.
+    In 2009, an \acrshort{acs} professor introduced the university's \gls{moodle} platform through an EU-funded project called "E-learning and e-content curriculum platform for technical higher education" (project number 154/323, \gls{smis} code 4428). According to the project's official website\cite{upb2009elearning}, the percentage of university courses providing digital (e-learning) materials grew from 9\% (170 courses) up to 35\% (600 courses) thanks to the project.
     % TODO vmchecker? Is it relevant?
     
     \subsubsection{\gls{covid19} response} \label{2:existing_apps_history_covid}
-    Due to the 2020 pandemic with the new coronavirus (SARS-CoV-2), \acrshort{upb} moved all classes and evaluations online starting in March. This lead to a sudden increase in usage for the university and the faculty's online platforms. Professors are now required to post materials and assignments on \gls{moodle}, as opposed to before the pandemic when they could choose. With students having no other choice but to use the platform and attend online classes on Microsoft Teams\footnote{https://teams.microsoft.com/}, the number of users per hour soared. This spike initially led to issues, due to the platform servers not being able to process such a large number of requests.
+    Due to the 2020 pandemic with the new coronavirus (SARS-CoV-2), \acrshort{upb} moved all classes and evaluations online starting in March. This situation led to a sudden increase in usage for the university and the faculty's online platforms. Professors are now required to post materials and assignments on \gls{moodle}, as opposed to before the pandemic when they could choose. With students having no other choice but to use the platform and attend online classes on Microsoft Teams\footnote{https://teams.microsoft.com/}, the number of users per hour soared. This spike initially led to issues, due to the platform servers not being able to process such a large number of requests.
     
     % TODO data?
     Furthermore, some long-awaited changes came into effect thanks to the pandemic. For instance, requesting a document such as proof of enrollment could finally be done virtually by sending an e-mail, as a result of the university building being closed for students due to the pandemic. This activity previously required personally dropping off a hand-written request during the Student Office hours (9-11 am).
@@ -172,7 +172,7 @@ Additionally, we will also be looking into the existing applications targeted fo
     
     \begin{figure}[ht]
         \centering
-             \includegraphics[width=0.89\textwidth]{figures/charts/politehnik_usage.png}
+             \includegraphics[width=0.8\textwidth]{figures/charts/politehnik_usage.png}
         \caption{Active users on the application \textit{Politehnik}, as reported by \textit{\gls{firebase}}}
         \label{2:fig:politehnik_usage}
     \end{figure}

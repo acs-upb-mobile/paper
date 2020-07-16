@@ -3,8 +3,8 @@
 %				      ALEXANDRU N. IOANA, 2019-2020
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Print on A4 paper, double-sided, base font size 12pt
-\documentclass[a4paper,12pt,twoside]{report}
+% Print on A4 paper, base font size 12pt
+\documentclass[a4paper,12pt]{report}
 
 \usepackage[top=3.81cm,bottom=3cm,inner=3.5cm,outer=2.54cm]{geometry}
 
@@ -74,7 +74,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead{}
-\fancyhead[LE]{\nouppercase{\leftmark}}
+\fancyhead[L]{\nouppercase{\leftmark}}
 \fancyhead[RO]{\nouppercase{\rightmark}}
 \setlength\headheight{14.5pt}
 
@@ -98,11 +98,6 @@
 % Create title page
 \include{cover}
 
-% Leave a blank page for double side printing
-\thispagestyle{empty}
-\newpage
-\hbox{}
-
 % Insert the abstract
 \include{abstract}
 
@@ -118,6 +113,14 @@
 \listoftables
 \newpage
 
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4}
+\include{chapters/chapter5}
+\include{chapters/chapter6}
+
+% Include abbreviations
 \clearpage
 \addcontentsline{toc}{chapter}{Abbreviations}
 \printglossary[title=Abbreviations,type=\acronymtype]
@@ -127,13 +130,6 @@
 \clearpage
 \addcontentsline{toc}{chapter}{Glossary}
 \printglossary
-
-\include{chapters/chapter1}
-\include{chapters/chapter2}
-\include{chapters/chapter3}
-\include{chapters/chapter4}
-\include{chapters/chapter5}
-\include{chapters/chapter6}
 
 % Include bibliography
 \clearpage

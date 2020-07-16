@@ -158,7 +158,7 @@ We also drew the "People" page containing professor and student information (fig
 
 Finally, we re-designed the classes and class information pages (fig. \ref{4:fig:balsamiq_classes}) and added visualizations for the filtering mechanism as well as the entire process of adding a new event to a class (fig. \ref{4:fig:balsamiq_events}), as requested by the feedback.
 
-Adding an event can be done by either manually inputting all data for the event (such as the name, class, and deadlines for homework) or using an event that somebody else has already created. Existing events can be voted up or down and would be automatically voted up if a user chooses to add it to their calendar in the application.
+Adding an event can be done by either manually inputting all data for the event (such as the name, class, and deadlines for homework) or using an event that somebody else has already created. Existing events can be voted up or down. They would be automatically voted up if a user chooses to add it to their calendar in the application.
 
 \clearpage
 
@@ -190,21 +190,134 @@ We asked ten students from different years to test this prototype and share thei
 
 The students who have iOS devices pointed out that the design style is more appropriate for Android than iOS devices, which was to be expected since the main inspiration for the prototype was an Android application which uses Material Design\cite{google2020material} (\textit{School Assistant}).
 
+Some students noted that a voting system on events could be abused since the user can ask their colleagues for votes.
+
 \section{Final design} \label{4:final}
 
 \subsection{Theme} \label{4:final_theme}
 
-\begin{wrapfigure}{l}{0.15\columnwidth}
+\begin{wrapfigure}{l}{0.14\columnwidth}
     \centering
-    \includegraphics[width=0.15\columnwidth]{figures/logos/acs.png}
+    \captionsetup{justification=centering}
+    \includegraphics[width=0.14\columnwidth]{figures/logos/acs.png}
     \caption{\acrshort{acs} logo}
     \label{4:fig:acs_logo}
 \end{wrapfigure}
 
-For the final design, we created a dual theme (including dark \& light mode) that is inspired by the faculty logo (fig. \ref{4:fig:acs_logo}). The primary and secondary colours of the application are extracted from the logo and used for text, buttons as well as illustrations.
+For the final design, we created a dual theme (including dark \& light mode) that is inspired by the faculty logo (fig. \ref{4:fig:acs_logo}). The primary and secondary colors of the application are extracted from the logo and used for text, buttons as well as illustrations.
 
-The font used in the application is Montserrat\footnote{https://fonts.google.com/specimen/Montserrat}.All icons are either Material Design icons\footnote{https://material.io/resources/icons/} or FontAwesome icons\footnote{https://fontawesome.com/icons/}. Illustrations are from the open-source unDraw\footnote{https://undraw.co/illustrations} gallery. All of the above are under open licenses and allow usage, modification and redistribution.
+The font used in the application is Montserrat\footnote{https://fonts.google.com/specimen/Montserrat}. All icons are either Material Design icons\footnote{https://material.io/resources/icons/} or FontAwesome icons\footnote{https://fontawesome.com/icons/}. Illustrations are from the open-source unDraw\footnote{https://undraw.co/illustrations} gallery. All of the above are under open licenses and allow usage, modification, and redistribution.
 
 \subsection{Pages} \label{4:pages}
 
-TODO
+For the sake of this paper, we will include only light theme / English screenshots of the most important pages in the application (figures \ref{4:fig:login} - \ref{4:fig:edit_event}).
+
+We decided to drop the navigation drawer - hamburger menu (\faBars) combo (fig. \ref{4:fig:balsamiq_menu}) in favour of a bottom navigation bar (fig. \ref{4:fig:home}). This decision is mostly due to the drawer not being an accepted pattern on iOS. Additionally, in recent years, navigation drawers have sparked controversy\cite{verge2019controversy} in the context of mobile gestures and many applications - including Google applications like Google Maps\footnote{https://www.google.com/maps} - are removing the drawers entirely, opting for a bottom navigation bar instead.
+
+The final design is otherwise fairly similar, \acrshort{ux}-wise, to the wireframe concept, but adds many \acrshort{ui} design elements such as a colour palette and illustrations on pages without a lot of content (such as the login/signup page - fig. \ref{4:fig:login} - and the settings page - \ref{4:fig:settings}).
+
+\begin{figure}[!ht]
+    \centering
+    \begin{minipage}[b]{0.32\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/login.jpg}
+        \caption{Login page}
+        \label{4:fig:login}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.32\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/home.jpg}
+        \caption{Home page}
+        \label{4:fig:home}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.32\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/settings.jpg}
+        \caption{Settings page}
+        \label{4:fig:settings}
+    \end{minipage}
+\end{figure}
+
+The portal page (fig. \ref{4:fig:portal}) allows the user to tap a website to open a browser window following that link. Users can also add and edit websites (depending on their permissions, see section \ref{4:permissions_levels}), as shown in figure \ref{4:fig:website}, and filter them (fig. \ref{4:fig:filter}). The filter is a tree structure based on the student body structure described previously in section \ref{1:student_body_structure}), where students can select any number of nodes they would be interested in.
+
+\clearpage
+
+\begin{figure}[!ht]
+    \centering
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/portal.jpg}
+        \caption{Portal page}
+        \label{4:fig:portal}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/website.jpg}
+        \caption{Edit website page}
+        \label{4:fig:website}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/filter.jpg}
+        \caption{Filter page}
+        \label{4:fig:filter}
+    \end{minipage}
+\end{figure}
+
+The classes page (fig. \ref{5:tab:classes}) allows the user to view information about the specific class (fig. \ref{4:fig:class}) and even the lecturer (\ref{4:fig:lecturer}).
+
+\begin{figure}[!ht]
+    \centering
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/classes.jpg}
+        \caption{Classes page}
+        \label{4:fig:classes}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/class.jpg}
+        \caption{Class information page}
+        \label{4:fig:class}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/lecturer.jpg}
+        \caption{Lecturer information modal}
+        \label{4:fig:lecturer}
+    \end{minipage}
+\end{figure}
+
+\clearpage
+
+The timetable page (fig. \ref{4:fig:timetable}) acts as a specialized calendar for university activities. Users can add and edit various events (fig. \ref{4:fig:edit_event}) that can be linked to a specific class, as well as view details about existing events (fig. \ref{4:fig:event}).
+
+\begin{figure}[!ht]
+    \centering
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/timetable.jpg}
+        \caption{Timetable page}
+        \label{4:fig:timetable}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/event.jpg}
+        \caption{Event information page}
+        \label{4:fig:event}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[b]{0.26\textwidth}
+        \captionsetup{justification=centering}
+        \includegraphics[width=\textwidth]{figures/app/flutter/edit_event.jpg}
+        \caption{Edit event page}
+        \label{4:fig:edit_event}
+    \end{minipage}
+\end{figure}
