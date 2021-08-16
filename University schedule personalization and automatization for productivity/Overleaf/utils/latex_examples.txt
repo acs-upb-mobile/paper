@@ -1,0 +1,288 @@
+= Imagini =
+
+Includerea unei imagini
+
+\begin{figure}[ht]
+  \begin{center}
+    \includegraphics[width=0.55\textwidth]{img/experiments.pdf}
+  \end{center}
+\caption{\label{fig:experiment} Running an experiment}
+\end{figure}
+
+Figure~\ref{fig:experiment} illustrates the....
+
+-----------------------------------------------------------------------
+Ca sa pui doua imagini una langa alta:
+
+
+\begin{figure}[ht]
+
+  \fbox{\includegraphics[width=0.50\textwidth]{img/multi-cpu-load.png}}
+    \hspace{10px}
+    \fbox{\includegraphics[width=0.50\textwidth]{img/multi-mem-load.png}}
+
+  \label{fig:multi4}
+\caption{CPU and memory load comparison between experiments with one AI running locally}
+\end{figure}
+
+-----------------------------------------------------------------------
+Pt a fixa tabelul: \begin{table}[!htbp]
+
+Ca sa fixezi mai bine locul unde apare imaginea:
+
+http://tex.stackexchange.com/questions/32598/force-latex-image-to-appear-in-the-section-in-which-its-declared
+
+In documentul principal: \usepackage[section]{placeins} %place float stuff inside sections
+
+\begin{figure}[!htb]
+
+  \fbox{\includegraphics[width=0.50\textwidth]{img/exp3-cpu-load.png}}
+    \hspace{10px}
+    \fbox{\includegraphics[width=0.50\textwidth]{img/exp3-mem-load.png}}
+
+
+  \label{fig:exp3}
+\caption{Comparison of the average cpu and memory load for an offloading case with the following AIs: NoCAB, Terron, trAIns, Convoy, Chopper, WrightAI, MogulAI}
+\end{figure}
+
+--------------------------------------------------------------
+
+= Tabel = 
+
+Tabel care sa arate bine (\usepackage{booktabs}     % professional tables)
+(un tabel normal nu are tagurile cu toprule cmidrule, bottomrule)
+
+\begin{table}
+
+\begin{tabular}{lllll}   %daca vrei sa ai bare intre coloana pui l|l|... (l-left adjusted, r-right adjusted, c-centered)
+\toprule    
+\multicolumn{5}{c}{AI specialization} \\
+\cmidrule(r){1-5}
+Multifeature & Railway   & Ships    & Aircrafts    & Road vehicles\\
+\midrule
+AdmiralAI    & trAIns    & WmDOT    & WormAI       & Convoy      \\
+AIAI         & MailAI    & TerronAI & WrightAI     & PathZilla    \\
+DictatorAI   & SynTrans  & TransAI  & SynTrans     & RoadAI      \\
+NoCAB        & ChooChoo  &          & Chopper      & TeshiNet    \\
+OtviAI       & FastPTP   &          & Rython       & Rondje      \\
+SimpleAI     & AdmiralAI &          & CluelessPlus & CluelessPlus\\
+TerronAI     &           &          &              & gelignALte  \\
+TransAI      &           &          &              & MogulAI     \\
+\bottomrule
+\end{tabular}
+ \caption{Summary of AIs based on the features they are specialized in.
+ Multifeature AIs support at least 4 features and are specialized in one or two of them}
+ \end{table}
+
+
+Multirows per cell:
+
+& \shortstack[l]{first\\second} &
+
+!!! Daca am & \shortstack[l]{first\\[second]} da eroare Missing number. 
+Aveam nevoie se exprim continutul unui pachet si voiam [] si nu am putut. 
+Merge insa \shortstack[l]{first\\ceva [second]}
+---------------------------------------------------------------------
+
+= Referinte = 
+
+Pentru referinte, la articole, carti etc, foloseste direct bib-ul pe care ti-l 
+dau siteurile unde sunt articolele (acm, ieee etc).
+
+Pentru linkuri,
+
+@misc{swift,
+
+  title="{Swift protocol}",
+  note = "[last accessed 22-Apr-2013]",
+  howpublished="http://libswift.org/",
+}
+
+!!! Sa nu uiti virgulele dupa fiecare camp din {} de la referinte. Daca uiti 
+virgulele, iti da erori dubioase.
+
+Cand citezi pui: \cite{swift}
+
+Alt mod de a cita, care include si numele primului autor: 
+\citet{perttunen2015} ---> Perttunen et al. [57]
+[trebuie inclus \usepackage{natbib}]
+
+see more examples: http://gking.harvard.edu/files/natnotes2.pdf, pg 1.
+
+
+Pt a aparea un paper la bibliografie fara a fi citat: \nocite{swift}
+
+Pentru a afisa bibliografia:
+
+
+\bibliographystyle{abbrv}
+% am un fisier articol.bib in care am pus referintele
+\bibliography{articol}
+
+
+Bibliografia in ordinea citarii in articol:
+in loc de:
+\bibliographystyle{abbrv}
+pun:
+\bibliographystyle{ieeetr}
+
+----------------------------------------------------------------------
+= Includere cod/pseduocod = 
+
+Scriere cod - exista mai multe module lstlistings, verbatim, unele iti fac si 
+syntax highlight
+
+\usepackage{listings}
+
+\begin{lstlisting}
+module D_flip_flop(output reg Q, input D, clk, reset);
+always posedge clk begin
+    if(!reset)
+      Q <= 0;
+    else
+      Q <= D;
+end\end{lstlisting}
+
+Code highlight:
+
+\hypersetup{pdftex,colorlinks=true,allcolors=blue}
+ \lstset{
+    language=Java,
+    tabsize=8,
+    keepspaces,
+    extendedchars=true,
+    rulecolor=\color{black},
+    basicstyle=\footnotesize,
+    aboveskip=5pt,
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true,
+    frame=single,
+    showtabs=true,
+    showspaces=false,
+    showstringspaces=false,
+}
+
+In beamer frameurile trebuie sa aiba [fragile] ca sa mearga listings-urile
+\begin{frame}[fragile]
+\frametitle{Title of the frame}
+
+Pentru a schimba font size=ul doar pentru un anumit listing si nu global
+cu lstset, punem: 
+\begin{lstlisting}[
+basicstyle=\fontsize{10}{11}\ttfamily, %sau basicstyle=\small sau \tiny etc
+]
+blabla
+\end{lstlisting}
+
+
+
+-----------------------------------------------------------------------
+Cuprins
+
+\tableofcontents
+
+\listoffigures
+\listoftables
+\lstlistoflistings
+
+Pt a nu aparea tot textul din caption:
+\caption[Short version for LoF]{Long version to appear next to the figure/table etc.}
+
+Pt tabele care se intind pe mai multe pagini (longtable) 
+
+-----------------------------------------------------------------------
+
+
+Schimbat numele abstract-ului: 
+
+\usepackage{abstract}
+
+\begin{document}
+\renewcommand{\abstractname}{Rezumat}
+
+....
+
+Schimbat numele keywords-urilor
+pt templateul article
+\providecommand{\keywords}[1]{\textbf{\textit{Cuvinte cheie---}} #1}
+in preamble
+sau (pt templateul ieee)
+\renewcommand{\keywords}{\textbf{\textit{Cuvinte cheie---}}} dupa begin document
+
+Schimbat numele bibliografiei:
+
+pt template-ul article:
+\begin{document}
+\renewcommand{\refname}{Bibliografie}
+
+- pt altele ar putea merge \bibname in loc de refname
+
+-------------
+Header/Footer
+
+\usepackage{fancyhdr}
+\urlstyle{sf}
+\pagestyle{fancy}
+\lhead{Text blabla }
+\chead{}   % daca nu sunt puse blank va fi pus textul default, e.g. la rhead titlul sectiunii
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage} % pus numarul paginii in partea dreapta jos
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy} %daca vrem ca header-ul si footer-ul sa apara si pe pagina care contine titlul
+
+
+-------------
+Box 
+
+
+\noindent\makebox[\textwidth][c]{%
+\begin{minipage}{0.90\textwidth}
+\hrulefill\par
+Exemple:
+\begin{itemize}
+\item În prima iterație, nodurile cu ID-urile 1..N-1 vor avea nevoie de linia 0. Este interzis ca nodul 0 să citească această linie din datastore-ul său o singură dată, la începutul iterației, să o stocheze într-un câmp al clasei și apoi să raspundă celolalte noduri citind date din acest câmp. El va trebui să interogheze datastore-ul pentru fiecare cerere primită. În exemplul prezentat, va citi linia din datastore de N-1 ori.
+\item La o anumită iterație un nod are nevoie să calculeze un factor cu care va înmulți linia pivotului pentru a obține zero-uri pe linia sa. Acest factor este un raport între două valori. O dată cerute cele două valori de la datastore-uri și calculat factorul, acesta poate fi refolosit de oricâte ori și nu va fi considerată cache-uire.
+\end{itemize}
+\par\hrulefill
+\end{minipage}}
+
+--------------
+
+Link foarte util pt glossaries
+https://www.sharelatex.com/learn/Glossaries
+
+--------------
+
+Ca sa nu fie nevoie sa escapezi underscore-urile:
+
+\usepackage{underscore}
+
+
+--------------
+
+Comments/notes ca in documentele de tip word:
+\usepackage{todonotes}
+
+se foloseste punand \todo{blablla} prin text
+
+daca folosim template-ul report.cs.pub.ro.cls trebuie comentata comanda:
+% command for specifying TODOs
+%\newcommand{\todo}[1]{
+%	\colorbox{yellow}{
+%		\begin{minipage}{15cm}
+%			\textbf{TODO:}\\
+%			#1
+%		\end{minipage}
+%	}
+%}
+
+
+
+

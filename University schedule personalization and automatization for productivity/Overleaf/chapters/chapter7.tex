@@ -1,0 +1,46 @@
+\chapter{Conclusion } \label{chapter7}
+
+\section{Achievements } \label{7:achivments}
+As mentioned in the first chapter, this paper proposed a solution to the schedule management problem for students.
+
+By taking advantage of the existence of ACS UPB Mobile, we managed to find an appropriate environment for the proposed software solution to be integrated within. As the application already had a timetable implemented, we successfully contributed to it, including more event types to reflect all of the ongoing academic activities better, enhancing the user interface and experience, and adding new functionalities to help the students track and solve tasks faster.
+
+Researching the other applications that implement similar features to the ones proposed, we found general structures that can be very powerful in tracking day-to-day tasks in the hands of a proficient user. As university events can also be translated into these applications, an inconvenience was the initial effort to transform academic assignments into general events and to keep them updated. We identified relevant elements and managed to implement them inside the application, keeping similar user flows so a transition can be done with less adaptation effort. 
+
+We analyzed the existing architecture and found ways to integrate new components, starting from the database, where we added a new collection and integrated new documents inside already existing collections. We managed to implement a new planner feature and add it to the application, ensuring it doesn’t disrupt other modules.
+We continued by creating a good user interface. We followed the UI and UX guidelines established in the application by the nature of its cross-platform philosophy. We kept common elements and flows of actions, as we wanted to create a pleasant and engaging experience rather than reinventing the wheel. By analyzing the red routes and user flows for our planning solution, we managed to build a coherent user interface. Adjusting already used widgets, we also visually integrated our additions. 
+
+In the end, we will iterate through the goals proposed in the introduction chapter and present how they were achieved. 
+
+One goal when working for the application was enhancing the already implemented schedule components. We managed to tie together the existing class events in the timetable with our implementation of assignments. Therefore, adding, editing, and displaying the new events is now an integrated experience in the application as they behave like the other ones. 
+
+Another goal was to improve the user interface and experience. We did that by adding new widgets in crucial places, like the homepage and the classes information page, that show relevant pieces of information about the events. By doing this, we created a better experience for the students that use the application to track their schedule. Also, based on the pre-existing information, we generated relevant graphs to help in visualizing and understanding how activities are distributed in relation to time.
+
+The general goal was to integrate the new components and user flows with the already existing ones in a way that feels natural so that the result brings the application a step closer to being a universal tool for any student. By adding the planning features, we also gave the application a new purpose as a mechanism for tracking tasks. Now, the user has the ability to customize its events by setting his own goals or by hiding them if they are of no interest. Adding a new page for the planner was an efficient way of separating the tasks from the other events, as it encourages the users to start using this feature as a tool to gather relevant information quickly. 
+
+While working on the application, we had to follow good coding practices and plan ahead of time. It was a broad experience, as the development required learning Flutter, understanding the already existing architecture and how to adhere to it, user behaviors and how to design the interface to be more friendly. 
+
+\section{Prospect} \label{7:prospect}
+
+\subsection{Additional features} \label{7:follow}
+
+As the module described in this paper lays the foundation of the personalization and automatization of the university schedule, an opportunity for improvement arises. The features implemented can be considered a starting point, as they handle the general problems that the students have to deal with when trying to manage their time. A continuous development process can be established so that our solution evolves with new academic demands.
+
+One example, using the power of Firestore, changing the data model for the assignments is simple, as the document structure is flexible. Changes within the application are also easy to do, as all the methods that deal with data transfer are contained in a single provider. This continues the design philosophy of a general-purpose application that can be easily customized to satisfy the needs of students. 
+
+New feature ideas are also taken into account, as the development team behind the application is also part of the target users, and feedback can be easily obtained. By doing regular checks over the ratings and suggestions given by the users, and also directly engaging with them in online communication groups provided in applications like WhatsApp, Facebook, Teams, we can obtain valuable insights on their satisfaction levels, opinions, and suggestions.
+
+As the project for the planner features is visible for anyone on the Github repository of the application, anyone can directly contribute to the evolution process by raising issues, suggestions, and detailed features inside, and also independently developing upgrades for them to be included in the codebase. Examples for future upgrades are integrating more goals for an assignment, generating more relevant statistics and advice on how a task should be handled, a higher level customization by letting the user create personalized aims.
+
+Two new features that can be added are group tracking, an option for teams of students to all track one assignment. This creates an opportunity for collaboration, as it will encourage and guide all the members of the group to better organize, to periodically post updates on their work, and generally, to track the progress of the task. By doing so, we advance from the problem of helping one student with his time management to organizing the shared schedule of groups of students. The difficulties of having different work habits and targets deserve a comprehensive solution. The mechanism of goals was intentionally planned to be a separated component from the events, as this offers a foundation for implementing this feature.
+
+The other feature is integrating artificial intelligence to analyze the behavior of the users and guide them to choose a style that best suits them. As more and more users start to use the application for all its features, it can become a suitable environment for student behavior analysis. On one hand, the data collected can help predict and recommend typical actions. On the other hand, the data collected can be used to generate statistics and send them to the university to be interpreted. 	
+
+\subsection{StundentHub} \label{7:follow}
+While the solution of this paper was in a development phase, the team of ACS UPB Mobile participated in the startup accelerator program called Innovation Labs\footnote{https://www.innovationlabs.ro/}.
+As the application was build from the start to be adaptable to changes in the academic structure of the ACS faculty, an opportunity was found as other faculties from Romania follow a similar structure. Customizing filters to reflect a new organization type, adding a new database, changing the color scheme and other minor changes are easily doable. After, the application is technically ready to be used inside a new faculty. 
+
+The features proposed in this solution were also build to be adaptable to a new structure. Our main concern was that the goals set by the users are general enough to be used in other notation systems while also not too generic, so the users don’t get confused. We managed to do that by guiding the users through the interface on what every field of the goal represents and what values should be inserted.
+
+As a final conclusion, the module implemented for the purpose of this paper proposed a solution for schedule personalization and automatization for productivity. Being part of the ACS UPB Mobile, we further customized the solution to fit the needs of the target users better. 
+\clearpage

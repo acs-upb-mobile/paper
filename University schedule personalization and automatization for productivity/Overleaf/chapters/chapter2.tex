@@ -1,0 +1,100 @@
+\chapter{Scope} \label{chapter2}
+
+Based upon the work done in “Design and Implementation of a Cross-Platform Mobile Application That Facilitates Student Collaboration ”, the bachelor thesis of Ioana Alexandru \cite{ioana2020upb}, this paper will continue analyzing the development process, prototyping, and impact of a personalization and automation feature within a computer science engineering faculty in Romania, namely Faculty of Automatic Control and Computer Science (the faculty or ACS) of University POLITEHNICA of Bucharest (UPB). 
+
+To define the scope of the software solution implemented in this paper, we first need to establish the needs of the direct beneficiaries, namely students. We do that by analyzing their environment, starting from an organizational point of view. 
+
+
+\section{Structure} \label{2:structure}
+
+Romania is part of the European Higher Education Area\footnote{https://www.ehea.info/} and UPB being compliant with the Bologna Process \cite{upb2012bologna}, the faculty offers three different learning cycles, namely a Bachelor’s degree, a Master’s degree, and a Doctoral school. As main points of interest for this paper, we will look at the first two, who are structured as follows :
+\clearpage
+
+\begin{itemize}
+            \setlength{\topsep}{0.5pt}
+            \setlength{\itemsep}{0.5pt}
+            \setlength{\parsep}{0.5pt}
+ \item Bachelor’s degree, a four-year cycle, split into two domains\footnote{https://acs.pub.ro/} :
+    \begin{itemize}
+            \setlength{\topsep}{0.5pt}
+            \setlength{\itemsep}{0.5pt}
+            \setlength{\parsep}{0.5pt}
+            \item Systems Engineering (IS)
+            \item Computers and Information Technology(CTI).
+            \end{itemize}
+
+From an organizational perspective, each generation of students from both branches is split into large assemblies, up to 150 people, referred to as a series. Each series is fragmented into smaller collectives, containing around 30 persons, called groups, which can be split into even a more minor organizing form known as a semi-group. There is one student responsible for the representation in front of the professors and disseminating information towards the colleagues for every one of them.
+
+ \item Master’s degree, only two years long, and it comes as a natural continuation to the final of the Bachelor’s program, being organized into Masters of Science programs, each one following a specific curriculum. It keeps the same structure presented above, but scaled down, as the students are more widely distributed.
+\end{itemize}
+
+\section{Grading} \label{2:grading}
+
+A university year for an ACS student is structured in two semesters, each succeeded by three weeks dedicated to exams, called exam sessions.
+Each semester has up to five main classes and other optional and facultative subjects. To consider a class passed, the student has to meet the criteria established by the course’s coordinator. These criteria revolve around gathering a minimum of points throughout the semester and at the final exam.
+
+The most common graded activities are laboratories and seminars, doing independent work in the form of assignments such as homework, projects, and research, but can also they can be evaluations such as tests and midterms. At the end of the semester, the grades for all of these activities are summed together, and the result is considered the final grade of the learning component.
+
+~
+
+It is relevant to mention that this general structure of grading is not unique to ACS, but relatively common throughout other Romanian faculties. Inside UPB, we find the same system implement in every faculty \cite{upb2013regulament}.
+
+Outside of UPB, other universities that have computer-science-related programs, such as the University of Bucharest \cite{unibuc2019regulament}, Bucharest University of Economic Studies \cite{ase2020regulament}, and The Technical University of Cluj-Napoca \cite{utcn2020regulament}, follow the same pattern.
+
+
+~
+
+\section{Tasks, Assignments, and Deadlines} \label{2:assignments}
+As described previously, we will continue to refer to the graded activities held during the semesters as university tasks. 
+For the purpose of this paper, we will focus on a specific category of tasks, namely assignments. We will analyze how they are defined inside ACS, but keeping in mind that the other faculties also use this structure. 
+
+Our main goal is to help students organize their schedule, and as homework, projects, and others span over multiple days and even weeks, we want to represent them inside our solution properly. Therefore, we need to find their particularities and how the students traditionally handle solving them.
+An important part of assignments is the date they must be solved and sent to be scored, which we will refer to as the deadline. A deadline can be of two types:  
+\begin{itemize}
+            \setlength{\topsep}{0.5pt}
+            \setlength{\itemsep}{0.5pt}
+            \setlength{\parsep}{0.5pt}
+            \item A hard deadline, commonly known as the last day the assignment can be submitted to be graded. 
+            \item A soft deadline, the date until the assignment can be submitted to be graded without any score punishment. 
+
+\end{itemize}
+In the period between the soft and hard deadline, daily penalties are usually applied to balance with the advantage of having extra time than required to solve. After the hard deadline, the assignment is considered closed, and there no more submissions are accepted.
+
+~
+
+Knowing this, we will be categorizing the tasks as follows :
+\begin{itemize}
+            \setlength{\topsep}{0.5pt}
+            \setlength{\itemsep}{0.5pt}
+            \setlength{\parsep}{0.5pt}
+            \item Homework: individual assignments, with a medium level of complexity, consisting of an apparent problem with its solution being correlated with a group of recently taught chapters in the corresponding course and further exercised at the laboratories or seminars. It usually has between two to four weeks to be solved and submitted. This is the most common type of assignment, being used in most classes with a programming component or concept presented. Regularly, the final submission is in the form of a software solution that can be automatically tested locally or remotely to see if it correctly solves the problem.
+
+            \item Project: individual or group-based assignments, with a more complex, more abstract theme that usually spans throughout the duration of the semester, with regular check-ins and a more subjective way of grading. They appear preponderantly in the latter years, as they test more skills and thus have more weight than other activities.
+            \item Research: assignments with an extended period dedicated to researching a specific subject or concept.
+            \item Tests: individual verifications.
+            \item Administrative: a particular category of tasks for actions unrelated to the learning process, such as selecting optional classes, sending official documents, and registering for events.
+
+\end{itemize}
+
+\section{Resources} \label{2:resources}
+
+Having described the core concepts that together define how the university is structured and how the educational process works, we will continue listing the leading platforms and applications that host the resources used by the academic community of ACS :
+\begin{itemize}
+            \setlength{\topsep}{0.5pt}
+            \setlength{\itemsep}{0.5pt}
+            \setlength{\parsep}{0.5pt}
+            \item University presentation websites\footnote{https://upb.ro/en/}, mainly used for distributing general pieces of information to people from the exterior community.
+            \item The faculty presentation website\footnote{https://acs.pub.ro/prezentare/despre-noi/} distributes available data and shares vital information for students, as the year structure, general-purpose announcements, timetables, and events. 
+            \item University platform dedicated to centralizing personal information for each student \footnote{https://studenti.pub.ro/}, and also used a bridge for other administrative inquiries. 
+            \item Open courseware\footnote{https://ocw.cs.pub.ro/courses/}, a public website used for publishing programming laboratories, homework, and projects.
+            \item Moodle\footnote{https://curs.upb.ro/}, a web application based on enrollment to an attending class to gain access to its private materials, and also used for the examination process during the period of online learning in the Covid-19 pandemic.
+            \item Assignment automatic checkers\footnote{https://vmchecker.cs.pub.ro/ui/}, web applications used by the students to remotely submit their homework and run it against predefined data sets. 
+            \item Microsoft 365 for Education\footnote{https://www.microsoft.com/ro-ro/education} platform utilized as a support tool for remote activities in the period of online learning.
+\end{itemize}
+
+Other universities also have used some of the mentioned tools. The University of Bucharest has also implemented its own online student management tool\footnote{https://online.unibuc.ro/ghiduri/} and uses Moodle and Microsoft 365\footnote{https://online.unibuc.ro/alege-o-resursa/} for the same reasons stated above. 
+It is also true for Bucharest University of Economic Studies\footnote{https://www.net.ase.ro/student/\#}.
+ 
+~
+ 
+Therefore, even though our solution is conceptualized for ACS, it can be adapted for other universities without changing the architecture and the relations between components.   
