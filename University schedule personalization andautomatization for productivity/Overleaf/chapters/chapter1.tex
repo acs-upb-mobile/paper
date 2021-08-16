@@ -1,0 +1,96 @@
+\chapter{Introduction} \label{chapter1}
+
+\section{Context} \label{1:context}
+In the opinion of Peter Turla \cite{turla1983time}, \textit{You don’t manage time, you drive behavior}. For the purpose of this paper, we can consider the previous observation as the general idea behind our proposed solution of increasing productivity by using customized time management tools. 
+
+~
+
+As technological advances have become an integrated and indispensable part of our lives \cite{deb2014information}, a new problem arises, that is, whether we should adopt a new technology or use an old one. Therefore, we need to consider all the factors that come into play when making a transition.  Is the new solution adding enough value? Is it mature enough? Do I have enough time to accommodate myself with it? Will it disrupt other processes that I use? Will another one take its place too soon? Is it reversible? Such questions come to mind when making a decision that can have an overwhelming impact \cite{butler2002barriers}.
+
+Taking a look at the traditional way of handling tasks, there is no standard. However, it can be summarised as the battle between procrastination and productivity \cite{peper2014increase}. Putting it into a student’s perspective, many factors contribute to optimizing the time used for learning, and using technology to improve the education process is one effective way. Translating natural flows of thoughts and actions regarding scheduling into digital workflows unlocks new capabilities. It also comes into aid for those that are having a hard managing time by themselves.
+
+~
+
+This paper proposes an upgrade to an already existing cross-platform application designed to englobe university resources. It is meant to give the students a personalized and user-friendly way of scheduling and automating university assignments and classes.
+
+
+
+\section{Background} \label{1:background}
+
+As every software solution that aims to help other people starts, the first and most important milestone is deciding on the development tools and processes. However, given the plethora of technologies available to every developer, choosing one gets harder and harder as many questions vital to the relevance and success of the final product start arising \cite{russo1999first}.
+
+~
+
+First, and most importantly, should this module be a stand-alone application or part of a more extensive suite of functionalities packed together inside a single, core application? Looking at the most popular apps used by young adults \cite{traynor2016media}, we can see the trend of encapsulating as much functionality as possible but still keeping these functionalities independent, so the users are not overwhelmed by long and tedious flows caused by the modules of the application being too strongly coupled or poorly designed. Seeing this trend and understanding the utility of having many functionalities related to one field, education in this case, even though this module could have been, on its own, an application, this would defeat its purpose of helping the students be more productive. Furthermore, having too many applications focused on solving different sections of one general problem gives an overhead to the user, switching between platforms with different interfaces constantly.
+
+~
+
+Secondly, on what framework should it be developed to be competitive with today’s standards, easily maintainable, adjustable, and most importantly, accessible to the consumer. Looking at the smartphone market in Romania, over 97\% of the population has at least one smart portable gadget \cite{digital2021romania}. 
+
+Taking a closer look, we see that two operating systems dominate, making together 99.18\% of Mobile operating systems' market share worldwide in the first quarter of 2021 \cite{statcounter2021mobileos}. Android, present in 72.72\% of all smartphones, and iOS in 26.46\%, have a clear duopoly in this sector, so the natural choice is to deliver the solution proposed in this paper on a mobile platform, ensuring that users from both environments receive the same experience and quality.
+
+
+\section{ACS UPB Mobile} \label{1:acsupbmobile}
+Started also as a Bachelor’s degree concept to help students gather different resources into one place, to make them more easily accessible, ACS UPB Mobile\footnote{https://github.com/student-hub/acs-upb-mobile}, referred to in this paper as the application or the app, is now published as a free tool dedicated to the students of the Faculty of Automatic Control and Computer Science\footnote{https://acs.pub.ro/} of University POLITEHNICA of Bucharest\footnote{https://upb.ro/en/}.
+
+We were inspired by the approach and development done by the team behind ACS UPB Mobile, and decided that the best strategy for delivering our solution is to integrate it inside the application.
+A collaboration was proposed, and as the goal of this paper is ultimately to help students with their academic activities, which is the same as the application’s purpose, we reached an agreement.
+
+~
+
+The project owner agreed to guide and supervise the development process, and decided that a feature can be delivered only if it passes all the quality checks. The complete development process, starting from planning to delivery, will be fully described in the \ref{chapter6}'th chapter. 
+
+
+
+
+\section{Proposed functionality} \label{1:proposedfunctionalities}
+
+This paper documents the development of a schedule management module, putting emphasis on the following list of goals and functionalities that seek to increase the productivity of its users:
+
+\begin{itemize}
+            \setlength{\topsep}{0.5pt}
+            \setlength{\itemsep}{0.5pt}
+            \setlength{\parsep}{0.5pt}
+            \item Integrating assignments with the already existing events types, making sure users can add, edit, see and delete them.
+            \item Adding a planner functionality, letting the user choose what assignments they want to focus on and what to ignore.
+            \item Adding customization to the assignments, specific to each user, letting them set their own goals when solving a task.
+            \item Giving relevant statistics to the users for each assignment, such as estimated effort required, pace, and advices.
+            \item Adding relevant pieces of information in key locations inside the application.
+            \item The mentioned features are coherently integrated, using the code, design, and resource conventions already existing in the project, making the application as homogeneous as possible.
+        \end{itemize}
+
+
+\section{Goals} \label{1:goals}
+As time passes and new generations adhere to higher education degrees, eager to learn and explore the full potential of technological advancements, any university will struggle to maintain any informational application daily updated, assuring that the distributed information is correct and up to date. Even with a team dedicated only to the application’s administration, this type of architecture is not vertically efficient, as it is prone to misunderstandings and errors. 
+
+This is why giving students accountability is, from the other similar applications point of view, such an innovating factor.
+Thoroughly described in the following chapters, the app filled a gap in the distribution of academic resources. As an open-source project, student-centered, modularized, cross-platform, with the alpha version already used by the students, it will be the working base of this paper. We will be laying the foundation of the schedule personalization and automatization module that is to be integrated within it.
+
+~
+
+Our main goal is to integrate the proposed functionalities described in the previous section while also preserving the application’s architecture. We want our solution to naturally blend with the other components while also engaging the users to experiment and take full advantage of it.
+Other goals revolve around general interface changes to improve the user experience.
+
+
+\section{Structure} \label{1:structure}
+This paper will be structured in 7 chapters, as follows:
+\begin{itemize}
+            \setlength{\topsep}{0.5pt}
+            \setlength{\itemsep}{0.5pt}
+            \setlength{\parsep}{0.5pt}
+            \item Chapter \ref{chapter1}: Introduction
+            \item Chapter \ref{chapter2}: Scope, where we will be analyzing the academic establishment to better understand the needs of the students.
+            \item Chapter \ref{chapter3}: State of the art, where we will take a closer look at the current popular similar application that provides a more generalized solution for what is of concern in this paper.
+            \item Chapter \ref{chapter4}: Interface, where we will explain how we consolidated our upgrade inside the application and the UI \& UX guidelines we followed.
+            \item Chapter \ref{chapter5}: Implementation, where we will present the implementation and integration of our solution.
+            \item Chapter \ref{chapter6}: Deployment, where we describe the processes of delivering our features to the users.
+            \item Chapter \ref{chapter7}: Conclusions, where we present what we achieved in this paper and what opportunities it further enables.
+        \end{itemize}
+
+\clearpage
+
+
+
+
+
+
