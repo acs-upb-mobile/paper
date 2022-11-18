@@ -1,0 +1,51 @@
+\chapter{Conclusion} \label{chapter:conclusion}
+
+\section{Summary}
+
+    Our study explores the challenge of indoor and outdoor navigation tailored for a university campus, and the needs of the students and other types of users.
+    
+    In chapter \ref{chapter:sota}, we describe several different state of the art approaches for indoor and outdoor navigation, from generic solutions to related studies focusing on campus navigation.
+    
+    In chapter \ref{chapter:implementations}, we describe the four different implementations we developed in order to analyze and compare how some of these approaches stand up to the unique challenges of campus navigation. Through these implementations, we demonstrate different graphical representations of the campus, pathfinding, positioning and tracking approaches (from classic GPS to Augmented Reality solutions) as well as a combination of various technologies and APIs. 
+    
+    Finally, in chapter \ref{chapter:user_study}, we filter our assumptions and these implementations through the lens of potential users, in order to understand the benefits and shortcomings of each one. Our UX research methods include observation, user interviews, usability testing as well as an online survey.
+
+\section{Results}
+
+    Based on our testing and user feedback (chapter \ref{chapter:user_study}), we can conclude that the "less is more" principle applies for campus navigation.
+    
+    \subsection{Features} \label{5:features}
+    
+        Users prefer the map and navigation experience to be as uncomplicated as possible. They also don't want to see a lot of information on the map, and prefer to be able to filter specific points of interest. While a map can include data about various \acrshort{poi}s, different types of users are interested in different types of information. For example, prospective high-school students may want to see 360° views of various locations in the campus to know what to expect. However, students are more interested in quickly navigating to their next class. Furthermore, one-time users such as those who attend an event on campus would only be interested in finding their destination, and may be less willing to install a special app for that. Therefore, it is important to create a highly customizable map that can fit the needs of different user types, without introducing a lot of noise.
+        
+        While some users prefer creative alternatives to classic maps, most users found novel navigation approaches such as AR-based navigation to be too finicky and uncomfortable to use.
+        
+    \subsection{Source of truth}
+    
+        In terms of the source of truth, dynamic sources (e.g. Google Maps) can be useful for locations that tend to change relatively often. However, for a campus map that almost never changes, a static source (such as a floorplan (see implementations \#3 and \#4 in section \ref{3:implementations_overview}) or a fixed 3D campus model (see impl. \#2 and \#3) are just as reliable and significantly more resource-efficient. In contrast, implementation \#1 attempts to dynamically build the campus model using Google Maps SDK for Unity\footnote{\url{https://developers.google.com/maps/documentation/gaming/overview_musk}}. However, after extended testing, this approach does not scale well because the in-game generation of the map means there are many calls made to the Maps API, which not only increase latency and network usage for the user, but also leads to significant Google Cloud usage bills. For this specific approach, an alternative would be, since the buildings/alleys in the campus don’t change often, to fetch this information only once and bake it into the app. However, this is also not an ideal long-term solution, since the SDK has since been deprecated in October 2021.
+    
+    \subsection{Integrations}
+    
+        We have also discussed integrating with existing tools. Implementation \#1 attempts to integrate the navigation functionality into an existing app for students - \gls{app}. This app is currently using \gls{flutter} (a cross-platform UI framework) and a server-less solution called \gls{firebase} for the back-end. The integrationis possible using flutter\_unity\_widget\footnote{\url{https://pub.dev/packages/flutter_unity_widget}}, which allows us to embed Unity into a Flutter app. However, this approach had some significant drawbacks:
+        
+        \begin{itemize}
+            \item The app size increased tenfold with the addition of the Unity project (27MB vs 324MB)
+            \item High latency when navigating to the Unity widget (3-4s)
+            \item Instability: the widget is relatively new, so there is a high likelihood of crashes for more complex Unity projects
+        \end{itemize}
+        
+        Given that, based on a survey with 200+ respondents\cite{alexandru2020acsupbmobile} made for \gls{app}, the Map/navigation feature was the second lowest rated in terms of importance (out of 8), these drawbacks are not worth the in-app integration. Additionally, campus navigation would be a useful feature not only for students (which \gls{app} is aimed at), but also for staff (professors, administrative staff, cleaning staff etc.) as well as visitors (high school students, foreign students, parents, alumni etc.), especially given the number of events that happen on campus every year. Furthermore, \gls{app} requires authentication, which should not be necessary for someone who is just trying to find a location on campus.
+        
+        Therefore, a better solution would be to have campus navigation as a separate app.This would not only allow users who are not students (and don’t have a university account) to use it, but it would also not force students who use \gls{app}, but don’t need the navigation assistance, to deal with the additional overhead. We can still achieve integration by allowing apps such as \gls{app} and UPB Campus to directly open a target location in our app for navigation.
+
+\section{Future improvements}
+
+    The user experience of any indoor/outdoor navigation solution is highly dependent on the positioning/tracking implemented by the solution. The accuracy of the user's position on the map directly influences their ease of navigation. In our implementations, we have leveraged the GPS location (impl. \#3) as well as AR-based position tracking (impl. \#4). As discussed in chapter \ref{chapter:sota}, GPS alone is not accurate enough for indoor positioning, and AR navigation is not widely accepted by users as a comfortable solution. Although positioning was not the main topic of this paper, it is worth noting that a campus navigation solution could greatly benefit from a more sophisticated localization system, especially for the purpose of indoor navigation.
+
+    As discussed in section \ref{5:features}, users want a navigation app to be as simple as possible. However, different users have different needs, and there is no "one size fits all", both in terms of navigation approaches as well as the actual information on the map (\acrshort{poi}s). As such, displaying rich information about various locations in the campus is just as valuable as having comprehensive filtering and customization options to match a user's preferences.
+% multiple filterable POIs
+% Can be further improved by refining indoor positioning
+% use initial location + inertial sensors https://arxiv.org/pdf/1704.06053.pdf
+% https://www.mdpi.com/1424-8220/19/13/2891/pdf
+% https://netsec.ethz.ch/publications/papers/han_ACComplice_comsnets12.pdf
+% https://www.ocf.berkeley.edu/~xuanyg/doc/Xuan_Sengupta_Fallah_2010_UPINLBS.pdf

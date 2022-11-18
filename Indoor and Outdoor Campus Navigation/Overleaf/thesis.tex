@@ -1,0 +1,167 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%					     	M.Sc. Thesis - (C)
+%				      ALEXANDRU N. IOANA, 2020-2021
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Print on A4 paper, base font size 12pt
+\documentclass[a4paper,12pt]{report}
+
+\usepackage[top=3.81cm,bottom=3cm,inner=3.5cm,outer=2.54cm]{geometry}
+
+\setcounter{secnumdepth}{4}
+
+% Actual font selection
+\usepackage{pxfonts} % bookman | pxfonts | cmbright
+
+% Include support for US english hyphenation (if installed on your system)
+\usepackage[USenglish]{babel}
+
+% Include support for correct printing of romanian characters
+\usepackage[T1]{fontenc}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+% Include support for graphics and code highlighting
+\usepackage[pdftex]{color,graphicx}
+\usepackage{minted}
+
+% Include support for wrapping figures left or right
+\usepackage{wrapfig}
+
+% Use colors
+\usepackage{xcolor}
+
+% Include support for hyperlinks in the document
+\PassOptionsToPackage{hyphens}{url}
+\usepackage{hyperref}
+\usepackage{url}
+\hypersetup{unicode=true,%
+	colorlinks=true,%
+	citecolor=black,%
+	filecolor=black,%
+	linkcolor=black,%
+	urlcolor=blue,%
+	breaklinks=true}
+	
+% Include support for PDFs
+\usepackage{pdfpages}
+
+\setcounter{tocdepth}{3}
+
+% Support special symbols
+\usepackage{wasysym}
+\usepackage{marvosym}
+\usepackage{fontawesome}
+
+% Support table formatting
+\usepackage{tabularx}
+
+% Allow left-justified/centered/right-justified table cells with fixed size
+\usepackage{array}
+\usepackage{ragged2e}
+\newcolumntype{L}[1]{>{\RaggedRight\hspace{0pt}}p{#1}}
+\newcolumntype{C}[1]{>{\Centering\hspace{0pt}}p{#1}}
+\newcolumntype{R}[1]{>{\RaggedLeft\hspace{0pt}}p{#1}}
+
+% Indent first paragraph
+\usepackage{indentfirst}
+
+% Describing algorithms
+\usepackage[figure,longend,lined,boxed]{algorithm2e}
+
+% Settings for using source highlighter
+\input{utils/highlight.tex}
+
+% Setup some new commands for easier image inserting and figure referencing
+\input{utils/commands.tex}
+
+% Abbreviations, Glossary & Appendix
+\usepackage[acronym]{glossaries}
+\makeglossaries
+\include{abbreviations}
+\include{glossary}
+\usepackage{caption}
+\usepackage[toc,page]{appendix}
+
+% Setting headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\nouppercase{\leftmark}}
+\fancyhead[RO]{\nouppercase{\rightmark}}
+\setlength\headheight{14.5pt}
+
+% Set spacing at 1.5lines
+\linespread{1.3}
+
+\usepackage{pdflscape}
+\usepackage{graphicx,xcolor}
+\usepackage{textgreek}
+
+% This allows using acronyms and glossary entries in the chapter name
+\pdfstringdefDisableCommands{
+  \def\acrshort#1{<#1>}
+  \def\acrlong#1{<1>}
+  \def\gls#1{<1>}
+}
+
+% Allow using \paragraph as a sort of \subsubsubsection
+\usepackage{titlesec}
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Document begins here
+\begin{document}
+
+% Create title page
+\include{cover}
+
+% Insert the abstract
+\include{abstract}
+
+% Insert the table of contents
+\tableofcontents
+
+% Include list of figures and tables
+\clearpage
+\addcontentsline{toc}{chapter}{List of figures}
+\listoffigures
+\newpage
+\addcontentsline{toc}{chapter}{List of tables}
+\listoftables
+\newpage
+
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4}
+\include{chapters/chapter5}
+
+% Include abbreviations
+\clearpage
+\addcontentsline{toc}{chapter}{Abbreviations}
+\printglossary[title=Abbreviations,type=\acronymtype]
+\newpage
+
+% Include glossary
+\clearpage
+\addcontentsline{toc}{chapter}{Glossary}
+\printglossary
+
+% Include bibliography
+\clearpage
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{IEEEtran}
+\bibliography{bibliography}
+
+% Include appendix
+\begin{appendices}
+\include{chapters/appendices}
+\end{appendices}
+
+\end{document}
