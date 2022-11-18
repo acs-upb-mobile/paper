@@ -1,0 +1,18 @@
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\makeatletter
+\addtocontents{toc}{%
+  \begingroup
+  \let\protect\l@chapter\protect\l@section
+  \let\protect\l@section\protect\l@subsection
+}
+\makeatother
+
+\chapter{AirDocs initial proposal} \label{a:airdocs}
+
+    \pagebreak
+    \begin{figure}
+        \centering 
+        \includepdf[pages=-]{appendices/airdocs_exec.pdf}
+    \end{figure}
+    
+\addtocontents{toc}{\endgroup}
