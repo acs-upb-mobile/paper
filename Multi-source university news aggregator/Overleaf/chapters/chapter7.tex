@@ -1,0 +1,50 @@
+\chapter{Conclusion} \label{chapter7}
+
+Concluding our thesis, we achieved the goal of implementing and testing a news aggregator module for faculty-related news.
+
+\section{Summary} \label{7:summary}
+
+We started initially by identifying the problem of having multiple heterogeneous information sources in our faculty context. We observed the fact that students at \textbf{ACS} need to navigate multiple platforms on a daily basis to stay up-to-date, as their data is not centralized on a single information channel, and we decided to come up with the solution of a news aggregator module that can serve as centralized information channel. 
+
+~
+We chose the existing \textbf{ACS UPB Mobile} app as the platform basis for building our features, as we concluded this is the best approach to reach a large number of students and leave a significantly positive impact.
+
+~
+Before getting a clear view of what we wanted to achieve, we decided to conduct a study and collect feedback from students to prove that this is an existing issue. Moreover, our goal was to understand what features would be most relevant for us to consider when building our module. 
+
+~
+At first, we decided to assess how students from other universities tackle this issue and how they organize their faculty-related information. As a result, these discussions helped us better prepare for collecting direct feedback from students from \textbf{ACS}. Finally, we shared an opinion form on multiple student chat groups, and we plotted the collected data to visualize student tendencies.
+
+~
+Upon completing our user study, we started prototyping our functionalities and user interface.  We worked in close feedback with the developer team from \textbf{ACS UPB Mobile} and started drafting our initial sketches according to their design guidelines. Our final design reflected our proposed functionalities and adhered to the guidelines of the existing app.
+
+~
+We used the Flutter framework to create our required user pages inside the app. Based on the existing platform of the \textbf{ACS UPB Mobile} app, we implemented several new user-facing functionalities, and we used the Firebase services to build a serverless backend architecture that supports our whole module. We used scheduled cloud functions to run web scrapers and we built the support for a push-notifications system. Besides aggregating online content from different platforms, our module allows students to publish targeted content for their colleagues using a filtering mechanism. Furthermore, we built the support for different user roles, thus giving different publishing rights in an admin-moderated manner. Finally, we integrated deep links support in the app so that users can share content on other platforms. 
+
+~
+Upon completing all of our desired functionalities, we performed a testing session with real users and gathered relevant feedback that helped us better shape our user experience and navigation flow.
+
+~
+In conclusion, we achieved the vertical integration of a news aggregator module over an existing app. As a result, we built support for several new functionalities and created a code base that can be further scaled with new capabilities in the future.
+ 
+\section{Future improvements} \label{7:future_improvements}
+
+Based on our collected user feedback and suggestions, we compiled a list of future improvements we plan to bring into our news aggregator module.
+
+\subsection{Improved scraping}
+
+As explained in \textbf{section \ref{5:web-scrapers}}, we use the available RSS feeds on our target platforms to scrape the needed information. However, although we scrape a satisfactory level of information from our platforms, there are certain visual elements such as images or tables that are mostly skipped during the scraping process. Thus, we cannot always retrieve the entire content from a post, and the results could weaken the user experience as a consequence. 
+
+~
+Currently, we scrape the XML content available in RSS feeds. In the future, we plan on developing more specialized HTML scrapers that could retrieve more elements for our aggregated news items directly from web pages. Each scraper could be specialized on a particular feed, but posts from a single source should follow a standard layout format. Otherwise, it will still prove tedious for a web scraper to reliably get the entire content of a news item on a constant basis. 
+
+\subsection{Lazy-loading lists}
+
+Our current news collection is relatively small in terms of item count, but the more sources we scrape and the more time it passes, the bigger it will grow. Bigger lists will take a heavy toll on memory performance on user devices and will deter the user experience without a lazy-loading strategy.
+
+~
+We plan on implementing a paging mechanism that should retrieve posts in chunks rather than all at once, as it is now the case. Besides the clear memory improvements, this strategy should yield the visual effect of an infinite scrollable feed\footnote{https://builtin.com/ux-design/infinite-scroll}, which is a design practice standard on popular social platforms. In the case of our news feed, we do not necessarily expect users to scroll through content for long periods of time, but we believe it will help our feed feel more in tune with other popular platforms that employ this practice.
+
+\subsection{More granular sources}
+
+We currently enable users to select between three types of information sources. For the future, we consider making them more granular to give users more control over their chosen sources. For example, when selecting student organizations, users can subscribe to some organizations and unsubscribe from others. However, we are not totally convinced whether this granular control will be needed for our case. For the moment, we plan on aggregating more sources and encouraging more students and entities to start using our feed. We consider that a necessary condition for having more detailed information sources is having large volumes of information in the first place. Therefore, we feel that the current level of content curation is enough for the present being.

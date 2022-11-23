@@ -1,0 +1,24 @@
+\chapter{Evaluation and user feedback} \label{chapter6}
+
+Having implemented our news aggregator module, we wanted to collect feedback from students concerning its user flow and general usability. Thus, we were interested in how students with different levels of familiarity with the app would get around this new module, and we tried to record their feedback and improvement suggestions. 
+
+~
+As mentioned in \textbf{chapter \ref{chapter5}}, some of our features are not fully working on the iOS platform due to hardware limitations during the development process. Consequently, we collected feedback from Android users only so that we could receive fair coverage of our proposed functionalities. We built our app in an APK file for our testing phase and sent it to our test users via online means. Our testers had different levels of familiarity with the app. Some were regular users, some had not opened the app for quite a long time, and some had never used the app before. We gave them an initial description of what features are to be expected when testing, but in the end, we wanted to assess how they get around the news aggregator without much bias.
+
+\section{Bug discovery}
+
+Naturally, our testers found bugs that escaped during the development process. While not critical, some bugs were common among users and could potentially negatively impact the user experience if left unfixed.
+
+~
+For example, when one user had their editing permissions request approved while having the application in the foreground, their app started throwing errors and shut down. In another instance, when composing a post, one user closed their Wi-Fi connection and started to press the submit button multiple times. These submissions were queued by Firebase locally, and upon network reconnection, all requests were sent to the database. While not necessarily a bug, one tester reported receiving excessively delayed notifications, but we concluded that this issue might have to do more with network connectivity than implementation. However, another tester received irregular notifications that helped us identify a bug in our relevance filtering mechanism. Consequently, that user received notifications about posts they were not supposed to see, as these posts were meant for a different group according to the relevance filter.
+
+~
+Finally, while manual testing helped us identify several bugs and achieve a significant coverage of our features, we plan on employing automated tests for our module in the future. Having automated tests for each new feature is part of the development guidelines promoted by the team behind \textbf{ACS UPB Mobile}, and it is a mandatory step when merging into the release branch.
+
+\section{UI/UX Feedback}
+
+Regardless of their previous familiarity with the app, our testers generally got used to the navigation flow fast and had little difficulty understanding how to achieve specific actions. Besides the clear navigation flow, they praised the informative text labels and visual elements that made them aware of what actions could be done at any step during their user journey.
+
+~
+However, there were some observations worth taking into account. For example, one user had trouble with the action buttons because these were too close to one another and caused misactions when pressed. On the other hand, almost all users understood how to apply for editing permissions, but it was not equally clear what the roles meant or how to apply for them. This feedback helped us update the UI and make this part of the user journey more intuitive. While developing, we put great emphasis on designing a workflow that should prevent users from getting lost while navigating the app. Additionally, some users complained about not being familiar with Markdown when composing a post. This issue made us consider allowing the users to choose whether they want to use this markup language or plain text when writing a post in the future.
+

@@ -1,0 +1,111 @@
+\chapter{Introduction} \label{chapter1}
+
+\section{Motivation} \label{1:motivation}
+
+In the era of hyperconnectivity, information systems, technological devices and people are connected to such a degree that technology has become almost indispensable for the normal flow of our work and personal environments. At the same time, the surge in digitalization has dramatically influenced the amount of daily information load that we are confronted with and has affected our general attention span when it comes to navigating online content \cite{death-info-overload}. While we may not be short on information, sorting and searching for the content we need has become a challenge, and we are in dire need of tools and solutions that could help curate our large data systems.
+
+~
+Information overload \cite{tunikova-info-overload} is only one of the modern digital problems that we are confronted with, but it is fair to say that technology is equally responsible for constantly improving our lives. The direction of technology is towards efficiency, optimization and automatization of processes, and even navigating large amounts of content could be a process that can be eventually solved. Therefore, the main focus should be on designing intelligent curating systems that filter and efficiently retrieve our information. According to the American author Clay Shirky \cite{clayshirky}: \textit{"It's not information overload. It's filter failure"}.
+
+~
+Nowadays, almost any system can represent a source of information overload, and unsurprisingly, even university ecosystems can fall into this category. For example, each university can employ several online services and platforms to organize its data and activity, thus generating a complex information network. Consequently, students can quickly become overwhelmed by the tedious task of retrieving their relevant content.
+
+~
+This paper proposes a news aggregator feature built upon an existing faculty mobile application, which aims to help students curate their relevant university content and encourage them to contribute to a centralised news feed that can help their colleagues.
+
+\section{Background} \label{1:background}
+
+For the purpose of this paper, we will build a solution aimed at the students of the \textbf{Faculty of Automatic Control and Computer Science}\footnote{https://acs.pub.ro/} from the \textbf{University POLITEHNICA of Bucharest}\footnote{https://upb.ro/}. The name of the existing project that we built upon is \textbf{ACS UPB Mobile}\footnote{https://github.com/student-hub/acs-upb-mobile}, and it is a cross-platform mobile application that wants to help students better manage their faculty life from a single platform. As a convention, we will denote the faculty mentioned above as \textbf{ACS} and the university as \textbf{UPB}. 
+
+~
+To better understand how to build our solution, we need to comprehend how a university ecosystem can steadily increase in information complexity. For example, one university can host an online domain for each faculty, and in turn, each faculty can organize its data (timetables, assignments, exams, course materials) on several platforms. Likewise, student organizations can each use a different service for hosting their activity, and, additionally, students can separately organize themselves on a wide range of social networks. Different entities repost each informative post several times, resulting in spam. Moreover, posts from distinct platforms do not generally have the same degree of visibility, meaning that students could be at risk of missing important updates.
+
+~
+Official institutional platforms can make it easier for students to retrieve a specific post, whereas social networks are predominantly convoluted and consume more time to be sorted out. As a result, not only the information load could become an issue for students, but also the daily context switching from one platform to another.
+
+~
+
+\section{ACS UPB Mobile} \label{1:acs-upb-mobile}
+
+\textbf{ACS UPB Mobile} was initially started by student \textit{Ioana Alexandru} as a Bachelor's thesis \cite{ioana-alexandru-paper} in 2020, and ever since, this project attracted more students as direct contributors\footnote{https://github.com/student-hub/acs-upb-mobile\#contributors}. The current focus of the app is the students of \textbf{ACS}, and it encompasses many core functionalities that all build towards better managing the student life at this faculty. The application is currently published via Google Play Store on Android\footnote{https://play.google.com/store/apps/details?id=ro.pub.acs.acs\_upb\_mobile} and has a publicly available web version\footnote{https://acs-upb-mobile.web.app/}.
+
+~
+\textbf{ACS UPB Mobile} was developed using the Flutter framework\footnote{https://flutter.dev/} from Google. Flutter uses the Dart programming language\footnote{https://dart.dev/}, and it is an open-source framework whose goal is to build beautiful, native-looking Android and iOS applications from the same code base \cite{whatisflutter}. We will go over Flutter more in detail once we discuss the actual implementation.
+
+~
+Smartphones are an essential and indispensable component for students to go by in their daily activities. According to this study\cite{students_smartphones}, students spend approximately 5 hours a day on their smartphone and check it at least 28 times on a daily basis. Thus, the choice of building a mobile application for students to manage their faculty life becomes logical.
+
+~
+Given recent analytics from the app's admin dashboard, over 650 student accounts are registered on the platform. This project has been thoroughly developed and tested by the passionate community behind it and has had several official releases up to this point. In addition, \textbf{ACS UPB Mobile} has a detailed contributing manifest\footnote{https://github.com/student-hub/acs-upb-mobile/blob/master/CONTRIBUTING.md}, a rigorous deployment pipeline, and a low entry bar for new developers to start contributing features. Therefore, using this existing platform for implementing our solution was a natural decision. Furthermore, we considered it the best choice for reaching a considerable number of students and thus, leaving a significant positive impact.
+
+~
+We have worked in a close feedback loop with the project developers, and we tried to follow their implementation guidelines along the process. Eventually, our news aggregator module should adhere to their quality standards and follow the design choices present in the app.
+
+
+\section{Proposed functionalities} \label{1:functionalities}
+
+Given the previously described environment at \textbf{\ref{1:acs-upb-mobile}}, we are going to put forward the functionalities that we need for our module to work as intended. We will separate between user-facing functionalities that impact the overall user experience and system-based characteristics that sustain the whole feature.
+
+~
+
+User-facing functionalities:
+
+\begin{itemize}
+    \setlength{\topsep}{0.5pt}
+    \setlength{\itemsep}{0.5pt}
+    \setlength{\parsep}{0.5pt}
+    \item \textbf{news feed page} for students to easily access their content
+    \item \textbf{separate details page} for each feed item
+    \item ability to \textbf{apply for user roles}
+    \item mechanism for students to \textbf{select their information sources}
+    \item \textbf{bookmark option} for students to mark their favorite items
+    \item \textbf{option to create new post} and \textbf{support for Markdown syntax} for custom text formatting
+    \item \textbf{external share mechanism} for an individual item
+\end{itemize}
+
+~
+
+System-based functionalities:
+
+\begin{itemize}
+    \setlength{\topsep}{0.5pt}
+    \setlength{\itemsep}{0.5pt}
+    \setlength{\parsep}{0.5pt}
+    \item \textbf{central database} with all unique news items
+    \item \textbf{web scrapers} that curate online content on different platforms
+    \item \textbf{news filtering mechanism} based on user's selected sources and global filters
+    \item \textbf{role-based mechanism} that grants different posting rights to students
+    \item \textbf{notifications system} that pushes recent posts to users
+    \item support for \textbf{deep linking}
+\end{itemize}
+
+\section{Goals} \label{1:goals}
+
+Information is essential in an environment that shifts increasingly more to the online, and we believe that each student should be empowered with the same access to information. By implementing our proposed functionalities, we want to unify several heterogeneous information sources into one feed and introduce a standard format for all news posts that can be easily browsed and sorted. Besides being a news aggregator from several platforms, we want to give students the possibility to contribute themselves to the main news feed and give them the means to make their posts come across more quickly and effectively.
+
+~
+By having all posts in one place, we want to reduce the spam volume and cut the need to repost the same news to make it more visible. Posts should have an author, a clear target group, and should be timestamped and have a straightforward chronology. By having clear metadata fields attached to each item, students will be able to sort out the content they need and have an easier time browsing the relevant data. 
+
+% At the same time, we understand that finding an older post can take up much time. Therefore, we want to give students the ability to retrieve their desired data efficiently by bookmarking essential items.
+
+~
+Above all, moderation is essential to keep a quality standard in our news feed. Posts should be informative, have a clear message, and be devoid of harmful or ill-directed intentions. As a result, we will offer on-request access to specific sub-groups of users to post content. Later, this strategy could be further improved through an automated gamification system. In other words, students would be able to earn their right to post by being positively involved on the platform and by earning a sufficient amount of points. As this paper states \cite{gamified-systems-paper}: "Gamification systems are used to motivate individuals to achieve specific goals".
+
+~
+In the end, we want our module to be compatible with the rest of the \textbf{ACS UPB Mobile} application and be part of a future release that can arrive in the hands of numerous students.
+
+\section{Outline} \label{1:outline}
+
+    \textbf{Chapter \ref{chapter1}} introduces the motivation and the goals of this paper
+    
+    \textbf{Chapter \ref{chapter2}} describes the state of the art. We talk to students enrolled at other universities and we try to understand how they manage their information sources. In addition, we try to analyze the existing solutions for \textbf{ACS} and how these have tackled our issue so far.
+    
+    \textbf{Chapter \ref{chapter3}} outlines the results obtained from collected feedback and focuses on what conclusions could be drawn from it. Finally, we try to plot our data using different representations and see what tendencies students at \textbf{ACS} follow when they want to retrieve their university-related information.
+    
+    \textbf{Chapter \ref{chapter4}} explains, based on our user study results, what functionalities we want to have for our news aggregator module and why we consider those most relevant for our use case. Following this, we propose our UI/UX prototype and explain the iterative process from our initial design to our final one.
+    
+    \textbf{Chapter \ref{chapter5}} describes the implementation process and the general architecture that supports our module.
+    
+    \textbf{Chapter \ref{chapter6}} presents the testing phase done with users and the results
+    
+    \textbf{Chapter \ref{chapter7}} describes the final conclusions of our thesis
